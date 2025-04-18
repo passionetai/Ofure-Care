@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms of Service - Ofure Care</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#1E3D59',
+                        secondary: '#F5F5F5',
+                        accent: '#FF6B6B',
+                        dark: '#0F1C2E',
+                        light: '#FFFFFF',
+                        gray: '#6B7280'
+                    },
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif']
+                    },
+                    animation: {
+                        fadeIn: 'fadeIn 1.5s ease-in-out',
+                        float: 'float 6s ease-in-out infinite'
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' }
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="font-sans bg-secondary text-primary">
+    <!-- Header -->
+    <header class="fixed w-full bg-primary text-secondary shadow-lg z-50">
+        <nav class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="index.html" class="flex items-center space-x-3 hover:opacity-90 transition duration-300">
+                <img src="images/logo.png" alt="Ofure Care Logo" class="h-12 w-auto">
+                <div>
+                    <h1 class="text-xl font-bold text-white">Ofure Care</h1>
+                    <p class="text-xs text-white opacity-80">WE SURELY CARE</p>
+                </div>
+            </a>
+
+            <!-- Desktop Navigation -->
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="index.html#about" class="hover:text-accent transition duration-300 flex items-center">
+                    <i class="fas fa-info-circle mr-2"></i> About
+                </a>
+                <a href="index.html#program" class="hover:text-accent transition duration-300 flex items-center">
+                    <i class="fas fa-graduation-cap mr-2"></i> Program
+                </a>
+                <a href="index.html#testimonials" class="hover:text-accent transition duration-300 flex items-center">
+                    <i class="fas fa-quote-left mr-2"></i> Testimonials
+                </a>
+                <a href="index.html#gallery" class="hover:text-accent transition duration-300 flex items-center">
+                    <i class="fas fa-images mr-2"></i> Gallery
+                </a>
+                <a href="index.html#faq" class="hover:text-accent transition duration-300 flex items-center smooth-scroll">
+                    <i class="fas fa-question-circle mr-2"></i> FAQ
+                </a>
+                <a href="index.html#blog" class="hover:text-accent transition duration-300 flex items-center smooth-scroll">
+                    <i class="fas fa-blog mr-2"></i> Blog
+                </a>
+                <a href="index.html#contact" class="hover:text-accent transition duration-300 flex items-center">
+                    <i class="fas fa-envelope mr-2"></i> Contact
+                </a>
+                <a href="index.html#register" class="bg-accent text-white px-6 py-2 rounded-full hover:bg-opacity-90 transition duration-300 font-medium flex items-center">
+                    <i class="fas fa-user-plus mr-2"></i> Apply Now
+                </a>
+            </div>
+
+            <!-- Mobile Navigation Button -->
+            <div class="md:hidden flex items-center">
+                <button id="mobile-menu-button" class="text-2xl">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </nav>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-primary absolute w-full left-0 px-4 pb-4 z-40 shadow-lg">
+            <a href="index.html#about" class="block py-3 border-b border-gray-700 hover:text-accent transition duration-300 flex items-center">
+                <i class="fas fa-info-circle mr-3 w-6 text-center"></i> About
+            </a>
+            <a href="index.html#program" class="block py-3 border-b border-gray-700 hover:text-accent transition duration-300 flex items-center">
+                <i class="fas fa-graduation-cap mr-3 w-6 text-center"></i> Program
+            </a>
+            <a href="index.html#testimonials" class="block py-3 border-b border-gray-700 hover:text-accent transition duration-300 flex items-center">
+                <i class="fas fa-quote-left mr-3 w-6 text-center"></i> Testimonials
+            </a>
+            <a href="index.html#gallery" class="block py-3 border-b border-gray-700 hover:text-accent transition duration-300 flex items-center">
+                <i class="fas fa-images mr-3 w-6 text-center"></i> Gallery
+            </a>
+            <a href="index.html#faq" class="block py-3 border-b border-gray-700 hover:text-accent transition duration-300 flex items-center smooth-scroll">
+                <i class="fas fa-question-circle mr-3 w-6 text-center"></i> FAQ
+            </a>
+            <a href="index.html#blog" class="block py-3 border-b border-gray-700 hover:text-accent transition duration-300 flex items-center smooth-scroll">
+                <i class="fas fa-blog mr-3 w-6 text-center"></i> Blog
+            </a>
+            <a href="index.html#contact" class="block py-3 border-b border-gray-700 hover:text-accent transition duration-300 flex items-center">
+                <i class="fas fa-envelope mr-3 w-6 text-center"></i> Contact
+            </a>
+            <a href="index.html#register" class="block w-full bg-accent text-white px-6 py-3 rounded-lg hover:bg-opacity-90 transition duration-300 font-medium text-center mt-4 flex justify-center items-center">
+                <i class="fas fa-user-plus mr-2"></i> Apply Now
+            </a>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="pt-32 pb-20 bg-secondary">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto bg-white p-8 rounded-xl shadow-lg">
+                <h1 class="text-3xl md:text-4xl font-bold mb-6 text-primary">Terms of Service</h1>
+                <p class="text-gray-600 mb-8">Last Updated: May 1, 2025</p>
+
+                <div class="prose prose-lg max-w-none">
+                    <h2>1. Introduction</h2>
+                    <p>Welcome to Ofure Care, operated by Ofure Clinic and Orphanage ("we," "us," or "our"). These Terms of Service ("Terms") govern your use of our website located at <a href="index.html" class="text-accent hover:underline">ofurecare.com</a> (the "Website") and the caregiver training services offered through our Website (collectively, the "Services").</p>
+                    
+                    <p>By accessing or using our Services, you agree to be bound by these Terms. If you disagree with any part of the Terms, you may not access the Services.</p>
+
+                    <h2>2. Eligibility</h2>
+                    <p>The Services are intended for users who are at least 18 years of age. By using the Services, you represent and warrant that you are at least 18 years old and that you have the right, authority, and capacity to enter into these Terms and to abide by all of the terms and conditions set forth herein.</p>
+
+                    <h2>3. Registration and Your Account</h2>
+                    <p>When you register for our caregiver training program, you may be asked to provide certain registration details or other information. It is a condition of your use of the Services that all the information you provide is correct, current, and complete.</p>
+                    
+                    <p>You are responsible for maintaining the confidentiality of your account and password and for restricting access to your computer or device. You agree to accept responsibility for all activities that occur under your account or password. You should notify us immediately if you believe that your account has been compromised.</p>
+
+                    <h2>4. Program Fees and Payment</h2>
+                    <p>The fees for our caregiver training program are as stated on our Website. All fees are non-refundable unless otherwise specified. We reserve the right to change our fees at any time, but changes will not affect registrations that have already been confirmed.</p>
+                    
+                    <p>Payment for the program must be made in accordance with the payment terms provided during the registration process. Failure to make timely payments may result in suspension or termination of your participation in the program.</p>
+
+                    <h2>5. Program Policies</h2>
+                    <p>By enrolling in our caregiver training program, you agree to:</p>
+                    
+                    <ul>
+                        <li>Attend all required classes and practical sessions</li>
+                        <li>Complete all assignments and assessments</li>
+                        <li>Comply with all program rules and regulations</li>
+                        <li>Maintain professional conduct during all program activities</li>
+                        <li>Respect the rights and privacy of other students and staff</li>
+                    </ul>
+                    
+                    <p>We reserve the right to dismiss any student from the program for failure to comply with these policies, without refund of any fees paid.</p>
+
+                    <h2>6. Certification</h2>
+                    <p>Upon successful completion of the program, including all required coursework, practical sessions, and assessments, students will receive a certificate of completion. This certificate is issued by Ofure Care and is recognized by relevant authorities in Nigeria.</p>
+                    
+                    <p>We do not guarantee employment or job placement upon completion of the program, although we do offer job placement assistance to our graduates.</p>
+
+                    <h2>7. Intellectual Property</h2>
+                    <p>The Services and their original content, features, and functionality are and will remain the exclusive property of Ofure Clinic and Orphanage and its licensors. The Services are protected by copyright, trademark, and other laws of both Nigeria and foreign countries.</p>
+                    
+                    <p>Our name, logo, and all related names, logos, product and service names, designs, and slogans are trademarks of Ofure Clinic and Orphanage or its affiliates or licensors. You must not use such marks without our prior written permission.</p>
+                    
+                    <p>All materials provided as part of the caregiver training program, including but not limited to textbooks, handouts, presentations, and online resources, are for personal use only and may not be reproduced, distributed, or used for commercial purposes without our express written consent.</p>
+
+                    <h2>8. User Content</h2>
+                    <p>Our Services may allow you to post, link, store, share, and otherwise make available certain information, text, graphics, videos, or other material. By providing such content, you grant us the right to use, modify, publicly perform, publicly display, reproduce, and distribute such content on and through the Services.</p>
+                    
+                    <p>You agree that this license includes the right for us to make your content available to other users of the Services, who may also use your content subject to these Terms.</p>
+                    
+                    <p>You represent and warrant that: (i) the content is yours or you have the right to use it and grant us the rights and license as provided in these Terms, and (ii) the posting of your content on or through the Services does not violate the privacy rights, publicity rights, copyrights, contract rights, or any other rights of any person.</p>
+
+                    <h2>9. Prohibited Uses</h2>
+                    <p>You may use the Services only for lawful purposes and in accordance with these Terms. You agree not to use the Services:</p>
+                    
+                    <ul>
+                        <li>In any way that violates any applicable federal, state, local, or international law or regulation</li>
+                        <li>To transmit, or procure the sending of, any advertising or promotional material, including any "junk mail," "chain letter," "spam," or any other similar solicitation</li>
+                        <li>To impersonate or attempt to impersonate Ofure Care, an Ofure Care employee, another student, or any other person or entity</li>
+                        <li>To engage in any other conduct that restricts or inhibits anyone's use or enjoyment of the Services, or which, as determined by us, may harm Ofure Care or users of the Services or expose them to liability</li>
+                    </ul>
+
+                    <h2>10. Disclaimer of Warranties</h2>
+                    <p>The Services are provided on an "AS IS" and "AS AVAILABLE" basis, without any warranties of any kind, either express or implied. Neither Ofure Care nor any person associated with Ofure Care makes any warranty or representation with respect to the completeness, security, reliability, quality, accuracy, or availability of the Services.</p>
+                    
+                    <p>We do not warrant that the Services will be uninterrupted, timely, secure, or error-free, or that defects will be corrected. We do not warrant that the results that may be obtained from the use of the Services will be accurate or reliable.</p>
+
+                    <h2>11. Limitation of Liability</h2>
+                    <p>In no event will Ofure Care, its affiliates, or their licensors, service providers, employees, agents, officers, or directors be liable for damages of any kind, under any legal theory, arising out of or in connection with your use, or inability to use, the Services, including any direct, indirect, special, incidental, consequential, or punitive damages.</p>
+
+                    <h2>12. Indemnification</h2>
+                    <p>You agree to defend, indemnify, and hold harmless Ofure Care, its affiliates, licensors, and service providers, and its and their respective officers, directors, employees, contractors, agents, licensors, suppliers, successors, and assigns from and against any claims, liabilities, damages, judgments, awards, losses, costs, expenses, or fees (including reasonable attorneys' fees) arising out of or relating to your violation of these Terms or your use of the Services.</p>
+
+                    <h2>13. Governing Law</h2>
+                    <p>These Terms shall be governed by and construed in accordance with the laws of Nigeria, without regard to its conflict of law provisions.</p>
+                    
+                    <p>Any legal suit, action, or proceeding arising out of, or related to, these Terms or the Services shall be instituted exclusively in the courts of Nigeria, although we retain the right to bring any suit, action, or proceeding against you for breach of these Terms in your country of residence or any other relevant country.</p>
+
+                    <h2>14. Changes to Terms</h2>
+                    <p>We reserve the right, at our sole discretion, to modify or replace these Terms at any time. If a revision is material, we will try to provide at least 30 days' notice prior to any new terms taking effect. What constitutes a material change will be determined at our sole discretion.</p>
+                    
+                    <p>By continuing to access or use our Services after those revisions become effective, you agree to be bound by the revised terms. If you do not agree to the new terms, please stop using the Services.</p>
+
+                    <h2>15. Contact Us</h2>
+                    <p>If you have any questions about these Terms, please contact us:</p>
+                    
+                    <ul>
+                        <li>By email: <a href="mailto:info@ofurecare.com" class="text-accent hover:underline">info@ofurecare.com</a></li>
+                        <li>By phone: <a href="tel:+2347062354224" class="text-accent hover:underline">+234 706 235 4224</a></li>
+                        <li>By mail: No.5, Egbiri Aruogba Road, GRA, Benin City, Nigeria</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-primary text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <a href="index.html" class="flex items-center space-x-3 mb-4 hover:opacity-90 transition duration-300">
+                        <img src="images/logo.png" alt="Ofure Care Logo" class="h-12 w-auto">
+                        <div>
+                            <h1 class="text-xl font-bold">Ofure Care</h1>
+                            <p class="text-xs opacity-80">WE SURELY CARE</p>
+                        </div>
+                    </a>
+                    <p class="mb-4">Ofure Clinic and Orphanage. Providing exceptional caregiver training and empowering compassionate professionals.</p>
+
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="index.html#about" class="hover:text-accent transition">About Us</a></li>
+                        <li><a href="index.html#program" class="hover:text-accent transition">Training Program</a></li>
+                        <li><a href="index.html#register" class="hover:text-accent transition">Apply Now</a></li>
+                        <li><a href="index.html#testimonials" class="hover:text-accent transition">Testimonials</a></li>
+                        <li><a href="index.html#contact" class="hover:text-accent transition">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Resources</h4>
+                    <ul class="space-y-2">
+                        <li><a href="index.html#blog" class="hover:text-accent transition smooth-scroll">Caregiving Blog</a></li>
+                        <li><a href="index.html#faq" class="hover:text-accent transition smooth-scroll">FAQs</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Contact Info</h4>
+                    <address class="not-italic">
+                        <p class="mb-2">No.5, Egbiri Aruogba Road, GRA, Benin City</p>
+                        <p class="mb-2"><a href="tel:+2347062354224" class="hover:text-accent transition">+234 706 235 4224</a></p>
+                        <p class="mb-2"><a href="mailto:info@ofurecare.com" class="hover:text-accent transition">info@ofurecare.com</a></p>
+                    </address>
+                </div>
+            </div>
+
+            <div class="pt-8 border-t border-white border-opacity-20">
+                <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+                    <p>&copy; 2025 Ofure Care - Ofure Clinic and Orphanage. All rights reserved.</p>
+                    <div class="flex space-x-6">
+                        <a href="privacy-policy.html" class="hover:text-accent transition text-sm">Privacy Policy</a>
+                        <a href="terms-of-service.html" class="hover:text-accent transition text-sm">Terms of Service</a>
+                        <a href="sitemap.html" class="hover:text-accent transition text-sm">Sitemap</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="backToTop" class="fixed bottom-10 right-10 bg-accent text-white p-4 rounded-full shadow-lg hover:bg-opacity-90 transition opacity-0 invisible">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script src="main.js"></script>
+</body>
+</html>

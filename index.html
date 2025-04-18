@@ -1,0 +1,1180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ofure Care - Caregiver Training Institute</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#1E3D59',
+                        secondary: '#F5F5F5',
+                        accent: '#FF6B6B',
+                        dark: '#0F1C2E',
+                        light: '#FFFFFF',
+                        gray: '#6B7280'
+                    },
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif']
+                    },
+                    animation: {
+                        fadeIn: 'fadeIn 1.5s ease-in-out',
+                        float: 'float 6s ease-in-out infinite',
+                        gradientBackground: 'gradientBackground 15s ease infinite'
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' }
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' }
+                        },
+                        gradientBackground: {
+                            '0%': { 'background-position': '0% 50%' },
+                            '50%': { 'background-position': '100% 50%' },
+                            '100%': { 'background-position': '0% 50%' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="font-sans bg-secondary text-primary">
+    <!-- Navigation -->
+    <header class="fixed w-full bg-primary text-secondary shadow-lg z-50">
+        <nav class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <a href="index.html" class="flex items-center space-x-3 hover:opacity-90 transition duration-300">
+                <img src="images/logo.png" alt="Ofure Care Logo" class="h-12 w-auto">
+                <div>
+                    <h1 class="text-xl font-bold text-white">Ofure Care</h1>
+                    <p class="text-xs text-white opacity-80">WE SURELY CARE</p>
+                </div>
+            </a>
+
+            <!-- Desktop Navigation -->
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="#about" class="hover:text-accent transition duration-300 flex items-center">
+                    <i class="fas fa-info-circle mr-2"></i> About
+                </a>
+                <a href="#program" class="hover:text-accent transition duration-300 flex items-center">
+                    <i class="fas fa-graduation-cap mr-2"></i> Program
+                </a>
+                <a href="#testimonials" class="hover:text-accent transition duration-300 flex items-center">
+                    <i class="fas fa-quote-left mr-2"></i> Testimonials
+                </a>
+                <a href="#gallery" class="hover:text-accent transition duration-300 flex items-center">
+                    <i class="fas fa-images mr-2"></i> Gallery
+                </a>
+                <a href="#faq" class="hover:text-accent transition duration-300 flex items-center smooth-scroll">
+                    <i class="fas fa-question-circle mr-2"></i> FAQ
+                </a>
+                <a href="#blog" class="hover:text-accent transition duration-300 flex items-center smooth-scroll">
+                    <i class="fas fa-blog mr-2"></i> Blog
+                </a>
+                <a href="#contact" class="hover:text-accent transition duration-300 flex items-center">
+                    <i class="fas fa-envelope mr-2"></i> Contact
+                </a>
+                <a href="#register" class="bg-accent text-white px-6 py-2 rounded-full hover:bg-opacity-90 transition duration-300 font-medium flex items-center">
+                    <i class="fas fa-user-plus mr-2"></i> Apply Now
+                </a>
+            </div>
+
+            <!-- Mobile Navigation Button -->
+            <div class="md:hidden flex items-center">
+                <button id="mobile-menu-button" class="text-2xl">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </nav>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-primary absolute w-full left-0 px-4 pb-4 z-40 shadow-lg">
+            <a href="#about" class="block py-3 border-b border-gray-700 hover:text-accent transition duration-300 flex items-center">
+                <i class="fas fa-info-circle mr-3 w-6 text-center"></i> About
+            </a>
+            <a href="#program" class="block py-3 border-b border-gray-700 hover:text-accent transition duration-300 flex items-center">
+                <i class="fas fa-graduation-cap mr-3 w-6 text-center"></i> Program
+            </a>
+            <a href="#testimonials" class="block py-3 border-b border-gray-700 hover:text-accent transition duration-300 flex items-center">
+                <i class="fas fa-quote-left mr-3 w-6 text-center"></i> Testimonials
+            </a>
+            <a href="#gallery" class="block py-3 border-b border-gray-700 hover:text-accent transition duration-300 flex items-center">
+                <i class="fas fa-images mr-3 w-6 text-center"></i> Gallery
+            </a>
+            <a href="#faq" class="block py-3 border-b border-gray-700 hover:text-accent transition duration-300 flex items-center smooth-scroll">
+                <i class="fas fa-question-circle mr-3 w-6 text-center"></i> FAQ
+            </a>
+            <a href="#blog" class="block py-3 border-b border-gray-700 hover:text-accent transition duration-300 flex items-center smooth-scroll">
+                <i class="fas fa-blog mr-3 w-6 text-center"></i> Blog
+            </a>
+            <a href="#contact" class="block py-3 border-b border-gray-700 hover:text-accent transition duration-300 flex items-center">
+                <i class="fas fa-envelope mr-3 w-6 text-center"></i> Contact
+            </a>
+            <a href="#register" class="block w-full bg-accent text-white px-6 py-3 rounded-lg hover:bg-opacity-90 transition duration-300 font-medium text-center mt-4 flex justify-center items-center">
+                <i class="fas fa-user-plus mr-2"></i> Apply Now
+            </a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero min-h-screen flex items-center pt-20">
+        <div class="container mx-auto px-4 py-20 text-center text-white">
+            <div class="rounded-full w-24 h-24 bg-white bg-opacity-20 backdrop-blur-sm flex items-center justify-center mx-auto mb-8 animate-float">
+                <i class="fas fa-heart text-white text-4xl"></i>
+            </div>
+            <h1 class="text-4xl md:text-6xl font-bold mb-2 animate-fadeIn">The Ofure Care Giver</h1>
+            <h2 class="text-2xl md:text-4xl font-bold mb-6 animate-fadeIn text-accent">Training Program</h2>
+            <h3 class="text-xl md:text-2xl font-bold mb-6 animate-fadeIn">"WE SURELY CARE"</h3>
+            <p class="text-xl md:text-2xl max-w-2xl mx-auto mb-8 font-light">Where Compassion Meets Professional Skill - Raising Global-Ready Caregivers</p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#register" class="bg-accent text-white px-8 py-4 rounded-full hover:bg-opacity-90 transition duration-300 font-bold text-lg shadow-lg transform hover:scale-105 flex items-center justify-center">
+                    <i class="fas fa-user-plus mr-2"></i> Start Your Journey
+                </a>
+                <a href="#program" class="border-2 border-white text-white px-8 py-4 rounded-full hover:bg-white hover:bg-opacity-10 transition duration-300 font-bold text-lg flex items-center justify-center">
+                    <i class="fas fa-book-open mr-2"></i> Explore Program
+                </a>
+            </div>
+            <div class="mt-16 flex justify-center animate-bounce">
+                <a href="#about" class="text-white animate-pulse">
+                    <i class="fas fa-chevron-down text-2xl"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="py-12 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="stat-bubble p-6 rounded-xl text-center shadow-lg transform hover:scale-105 transition duration-300">
+                    <div class="text-accent text-3xl mb-3">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="text-4xl font-bold text-primary mb-2 counter" data-target="560">0</div>
+                    <p class="text-gray-600">Training Hours</p>
+                </div>
+                <div class="stat-bubble p-6 rounded-xl text-center shadow-lg transform hover:scale-105 transition duration-300">
+                    <div class="text-accent text-3xl mb-3">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <div class="text-4xl font-bold text-primary mb-2 counter" data-target="92">0</div>
+                    <p class="text-gray-600">Placement Rate %</p>
+                </div>
+                <div class="stat-bubble p-6 rounded-xl text-center shadow-lg transform hover:scale-105 transition duration-300">
+                    <div class="text-accent text-3xl mb-3">
+                        <i class="fas fa-chalkboard-teacher"></i>
+                    </div>
+                    <div class="text-4xl font-bold text-primary mb-2 counter" data-target="7">0</div>
+                    <p class="text-gray-600">Expert Instructors</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <span class="text-accent font-bold text-2xl tracking-wider">ABOUT US</span>
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Transforming Lives Through <span class="text-primary">Compassionate</span> Care</h2>
+
+            </div>
+
+            <div class="flex flex-col lg:flex-row items-center gap-12">
+                <div class="lg:w-1/2 relative">
+                    <div class="rounded-xl overflow-hidden shadow-xl">
+                        <img src="images/founder.png" alt="Mrs. Philomena Isiramen, Founder of Ofure Care" class="w-full h-auto">
+                    </div>
+                    <div class="absolute -bottom-6 -right-6 bg-primary text-white p-6 rounded-xl z-10 shadow-lg w-64">
+                        <h3 class="text-xl font-bold mb-2 text-center">Government Accredited</h3>
+                                            </div>
+                </div>
+
+                <div class="lg:w-1/2">
+                    <h3 class="text-2xl md:text-3xl font-bold mb-4 text-primary">Meet Our Founder: <br><span class="text-accent">Mrs. Philomena Isiramen</span></h3>
+                                        <p class="text-lg mb-6 text-gray-600">"We love to care for every individual—young or old," says Mrs. Philomena Isiramen. Built on the same faith-driven ethos that powers Ofure Clinic and Orphanage, the institute turns that passion into structured, government-recognized training for caregivers across Nigeria.</p>
+
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <div class="bg-primary bg-opacity-10 text-primary p-3 rounded-full mr-4">
+                                <i class="fas fa-certificate"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-bold mb-1">Government Certified</h4>
+                                <p class="text-gray-600">External examiners issue certificates recognized in Nigeria and abroad.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start">
+                            <div class="bg-primary bg-opacity-10 text-primary p-3 rounded-full mr-4">
+                                <i class="fas fa-graduation-cap"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-bold mb-1">Comprehensive Training</h4>
+                                <p class="text-gray-600">No specialization silos: trainees cover the full lifespan—from pediatric to geriatric care.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start">
+                            <div class="bg-primary bg-opacity-10 text-primary p-3 rounded-full mr-4">
+                                <i class="fas fa-heart"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-bold mb-1">Dual-track Learning</h4>
+                                <p class="text-gray-600">Hospital-based practicums plus in-class theory for a complete educational experience.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-8 bg-secondary p-6 rounded-xl relative overflow-hidden">
+                        <div class="absolute -top-4 -left-4 text-6xl opacity-10">
+                            <i class="fas fa-quote-left text-primary"></i>
+                        </div>
+                        <h4 class="text-xl font-bold mb-2 relative z-10">Our Vision</h4>
+                        <p class="relative z-10 italic">"For Students – instill love, patience, empathy and professional know-how. For Society – supply families, hospitals and employers (local and international) with caregivers whose skills match their compassion."</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Training Program -->
+    <section id="program" class="py-20 bg-primary text-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <span class="text-accent font-bold text-2xl tracking-wider">OUR PROGRAM</span>
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Comprehensive <span class="text-white">Caregiver</span> Training</h2>
+                <p class="text-xl max-w-2xl mx-auto">Our 3-month intensive program combines theoretical knowledge with hands-on practical experience.</p>
+
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8 mb-12">
+                <div class="program-card bg-white text-primary p-8 rounded-xl hover:border-accent border-2 border-transparent transition">
+                    <div class="text-5xl mb-6 text-accent">
+                        <i class="fas fa-book-open"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Curriculum Highlights</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-accent mr-2 mt-1"></i>
+                            <span>Fundamentals of patient hygiene & mobility</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-accent mr-2 mt-1"></i>
+                            <span>Basic clinical skills & vital-sign monitoring</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-accent mr-2 mt-1"></i>
+                            <span>Nutrition for vulnerable populations</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-accent mr-2 mt-1"></i>
+                            <span>Communication & empathy training</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-accent mr-2 mt-1"></i>
+                            <span>Palliative and end-of-life support</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="program-card bg-white text-primary p-8 rounded-xl hover:border-accent border-2 border-transparent transition">
+                    <div class="text-5xl mb-6 text-accent">
+                        <i class="fas fa-hands-helping"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Program Essentials</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-accent mr-2 mt-1"></i>
+                            <span>Duration: 3 months + hospital practicum</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-accent mr-2 mt-1"></i>
+                            <span>No age limit or degree prerequisite</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-accent mr-2 mt-1"></i>
+                            <span>On-site in Benin City or live online</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-accent mr-2 mt-1"></i>
+                            <span>Government certification exam</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="program-card bg-white text-primary p-8 rounded-xl hover:border-accent border-2 border-transparent transition">
+                    <div class="text-5xl mb-6 text-accent">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Career Opportunities</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-accent mr-2 mt-1"></i>
+                            <span>Local hospital and home care positions</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-accent mr-2 mt-1"></i>
+                            <span>Private family employment</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-accent mr-2 mt-1"></i>
+                            <span>International job placement</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-accent mr-2 mt-1"></i>
+                            <span>Specialized care for all age groups</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="text-center mt-16">
+                <a href="#register" class="bg-accent text-white px-8 py-4 rounded-full hover:bg-opacity-90 transition duration-300 font-bold text-lg shadow-lg transform hover:scale-105 inline-flex items-center">
+                    <i class="fas fa-calendar-check mr-2"></i> Enroll Now
+                </a>
+            </div>
+
+            <div class="mt-16 bg-white bg-opacity-10 p-8 rounded-xl">
+                <h3 class="text-2xl font-bold mb-4 text-center">Upcoming Program Dates (2025)</h3>
+                <div class="mb-6 p-4 bg-accent bg-opacity-20 rounded-lg">
+                    <p class="text-white font-bold flex items-center"><i class="fas fa-exclamation-circle mr-2"></i> Important Note:</p>
+                    <p class="text-white text-sm">Enrollment for our February batch is currently open. Secure your spot now before the registration window closes!</p>
+                </div>
+                <div class="overflow-x-auto">
+                    <table class="w-full">
+                        <thead>
+                            <tr class="border-b border-white border-opacity-20">
+                                <th class="pb-4 pr-4 text-left">Session</th>
+                                <th class="pb-4 pr-4 text-left">Start Date</th>
+                                <th class="pb-4 pr-4 text-left">End Date</th>
+                                <th class="pb-4 pr-4 text-left">Format</th>
+                                <th class="pb-4 text-left">Status</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-white divide-opacity-10">
+                            <tr>
+                                <td class="py-4 pr-4 font-medium">Current Batch</td>
+                                <td class="py-4 pr-4">February 1, 2025</td>
+                                <td class="py-4 pr-4">May 2, 2025</td>
+                                <td class="py-4 pr-4">On-site</td>
+                                <td class="py-4">
+                                    <span class="bg-green-500 bg-opacity-20 text-green-500 px-3 py-1 rounded-full text-sm">Open</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="py-4 pr-4 font-medium">Current Batch</td>
+                                <td class="py-4 pr-4">February 1, 2025</td>
+                                <td class="py-4 pr-4">May 2, 2025</td>
+                                <td class="py-4 pr-4">Hybrid</td>
+                                <td class="py-4">
+                                    <span class="bg-green-500 bg-opacity-20 text-green-500 px-3 py-1 rounded-full text-sm">Open</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="py-4 pr-4 font-medium">Next Batch</td>
+                                <td class="py-4 pr-4">May 2, 2025</td>
+                                <td class="py-4 pr-4">August 3, 2025</td>
+                                <td class="py-4 pr-4">Hybrid/On-site</td>
+                                <td class="py-4">
+                                    <span class="bg-blue-500 bg-opacity-20 text-blue-500 px-3 py-1 rounded-full text-sm">Upcoming</span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Registration Form -->
+    <section id="register" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto bg-gradient-to-r from-primary to-dark p-1 rounded-xl">
+                <div class="bg-white rounded-lg p-8">
+                    <div class="text-center mb-8">
+                        <h2 class="text-3xl md:text-4xl font-bold mb-2 text-primary">Begin Your Caregiving Journey</h2>
+                        <p class="text-gray-600">Complete this form to start your application process.</p>
+                    </div>
+
+                    <form id="registrationForm" class="space-y-6">
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="fullName" class="block mb-2 font-medium">Full Name <span class="text-accent">*</span></label>
+                                <input type="text" id="fullName" name="fullName" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+                            </div>
+                            <div>
+                                <label for="email" class="block mb-2 font-medium">Email <span class="text-accent">*</span></label>
+                                <input type="email" id="email" name="email" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+                            </div>
+                        </div>
+
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="phone" class="block mb-2 font-medium">Phone <span class="text-accent">*</span></label>
+                                <input type="tel" id="phone" name="phone" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+                            </div>
+                            <div>
+                                <label for="education" class="block mb-2 font-medium">Highest Education Level</label>
+                                <select id="education" name="education" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+                                    <option value="high-school">High School Diploma</option>
+                                    <option value="college">College Degree</option>
+                                    <option value="vocational">Vocational Training</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block mb-2 font-medium">Program Format Preference</label>
+                            <div class="grid md:grid-cols-3 gap-4">
+                                <label class="flex items-center space-x-3 p-4 border rounded-lg hover:border-primary cursor-pointer transition">
+                                    <input type="radio" name="format" value="on-site" class="h-5 w-5 text-primary focus:ring-primary">
+                                    <div>
+                                        <p class="font-medium">On-site</p>
+                                        <p class="text-sm text-gray-500">Full-time intensive</p>
+                                    </div>
+                                </label>
+                                <label class="flex items-center space-x-3 p-4 border rounded-lg hover:border-primary cursor-pointer transition">
+                                    <input type="radio" name="format" value="online" class="h-5 w-5 text-primary focus:ring-primary">
+                                    <div>
+                                        <p class="font-medium">Online</p>
+                                        <p class="text-sm text-gray-500">Flexible scheduling</p>
+                                    </div>
+                                </label>
+                                <label class="flex items-center space-x-3 p-4 border rounded-lg hover:border-primary cursor-pointer transition">
+                                    <input type="radio" name="format" value="hybrid" class="h-5 w-5 text-primary focus:ring-primary">
+                                    <div>
+                                        <p class="font-medium">Hybrid</p>
+                                        <p class="text-sm text-gray-500">Combination of both</p>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label for="motivation" class="block mb-2 font-medium">Why do you want to become a caregiver?</label>
+                            <textarea id="motivation" name="motivation" rows="3" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"></textarea>
+                        </div>
+
+                        <div class="flex items-start">
+                            <div class="flex items-center h-5">
+                                <input id="privacy" name="privacy" type="checkbox" required class="focus:ring-primary h-4 w-4 text-primary border-gray-300 rounded">
+                            </div>
+                            <label for="privacy" class="ml-2 block text-sm">
+                                I agree to the <a href="privacy-policy.html" class="text-accent font-medium hover:underline">Privacy Policy</a> and understand that my data will be processed according to Ofure Care's data protection standards.
+                            </label>
+                        </div>
+
+                        <button type="submit" class="w-full bg-primary text-white px-6 py-4 rounded-lg hover:bg-opacity-90 transition duration-300 font-bold text-lg shadow-lg flex items-center justify-center">
+                            <i class="fas fa-paper-plane mr-2"></i> Submit Application
+                        </button>
+
+                        <div id="formSuccess" class="hidden mt-6 p-4 bg-green-100 text-green-700 rounded-lg text-center">
+                            <i class="fas fa-check-circle text-3xl mb-2 text-green-500"></i>
+                            <p class="font-bold">Application Submitted Successfully!</p>
+                            <p class="text-sm">Our admissions team will review your information and contact you within 3 business days.</p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-20 bg-secondary">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <span class="text-accent font-bold text-2xl tracking-wider">TESTIMONIALS</span>
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Voices from Our <span class="text-primary">Community</span></h2>
+
+            </div>
+
+            <div class="relative max-w-4xl mx-auto">
+                <div id="testimonialCarousel" class="relative overflow-hidden">
+                    <!-- Testimonial 1 (Graduate) -->
+                    <div class="testimonial-slide w-full">
+                        <div class="testimonial-card bg-white p-8 rounded-xl relative">
+                            <div class="absolute top-6 right-6 text-6xl opacity-10 text-primary">
+                                <i class="fas fa-quote-right"></i>
+                            </div>
+                            <div class="flex flex-col md:flex-row items-center gap-8">
+                                <div class="w-32 h-32 rounded-full overflow-hidden border-4 border-accent border-opacity-20 shadow-lg flex-shrink-0">
+                                    <img src="images/rebecca.png" alt="Rebecca Offor" class="w-full h-full object-cover">
+                                </div>
+                                <div>
+                                    <div class="text-accent text-3xl absolute -top-3 -left-3 bg-white rounded-full p-2 shadow-md">
+                                        <i class="fas fa-quote-left"></i>
+                                    </div>
+                                    <p class="text-lg italic mb-6 relative">"The training at Ofure Home changed my life trajectory. Not only did I gain comprehensive skills, but I discovered a genuine calling. Today, I have a rewarding career helping elderly patients maintain their dignity while ensuring their comfort and safety."</p>
+                                    <div>
+                                        <p class="font-bold text-primary">Rebecca Offor</p>
+                                        <p class="text-sm text-gray-600">Certified Geriatric Caregiver at Eko Senior Care • Batch 9 Graduate</p>
+                                        <div class="flex mt-2">
+                                            <i class="fas fa-star text-yellow-400"></i>
+                                            <i class="fas fa-star text-yellow-400"></i>
+                                            <i class="fas fa-star text-yellow-400"></i>
+                                            <i class="fas fa-star text-yellow-400"></i>
+                                            <i class="fas fa-star text-yellow-400"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Testimonial 2 (Current Student) -->
+                    <div class="testimonial-slide w-full hidden">
+                        <div class="testimonial-card bg-white p-8 rounded-xl relative">
+                            <div class="absolute top-6 right-6 text-6xl opacity-10 text-primary">
+                                <i class="fas fa-quote-right"></i>
+                            </div>
+                            <div class="flex flex-col md:flex-row items-center gap-8">
+                                <div class="w-32 h-32 rounded-full overflow-hidden border-4 border-accent border-opacity-20 shadow-lg flex-shrink-0">
+                                    <img src="images/Jane.png" alt="Jane Osamwonyi" class="w-full h-full object-cover">
+                                </div>
+                                <div>
+                                    <div class="text-accent text-3xl absolute -top-3 -left-3 bg-white rounded-full p-2 shadow-md">
+                                        <i class="fas fa-quote-left"></i>
+                                    </div>
+                                    <p class="text-lg italic mb-6 relative">"I'm currently halfway through my training at Ofure Home, and I'm already amazed at how much I've learned. The hands-on practicals are incredibly valuable, and the instructors are so supportive. I'm confident I'll be well-prepared for my career in caregiving."</p>
+                                    <div>
+                                        <p class="font-bold text-primary">Jane Osamwonyi</p>
+                                        <p class="text-sm text-gray-600">Current Student • February 2025 Batch</p>
+                                        <div class="flex mt-2">
+                                            <i class="fas fa-star text-yellow-400"></i>
+                                            <i class="fas fa-star text-yellow-400"></i>
+                                            <i class="fas fa-star text-yellow-400"></i>
+                                            <i class="fas fa-star text-yellow-400"></i>
+                                            <i class="fas fa-star text-yellow-400"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Testimonial 3 (Current Student) -->
+                    <div class="testimonial-slide w-full hidden">
+                        <div class="testimonial-card bg-white p-8 rounded-xl relative">
+                            <div class="absolute top-6 right-6 text-6xl opacity-10 text-primary">
+                                <i class="fas fa-quote-right"></i>
+                            </div>
+                            <div class="flex flex-col md:flex-row items-center gap-8">
+                                <div class="w-32 h-32 rounded-full overflow-hidden border-4 border-accent border-opacity-20 shadow-lg flex-shrink-0">
+                                    <img src="images/jeff.png" alt="Jeffery Asemota" class="w-full h-full object-cover">
+                                </div>
+                                <div>
+                                    <div class="text-accent text-3xl absolute -top-3 -left-3 bg-white rounded-full p-2 shadow-md">
+                                        <i class="fas fa-quote-left"></i>
+                                    </div>
+                                    <p class="text-lg italic mb-6 relative">"The hybrid learning model at Ofure Home is perfect for my schedule. I'm currently balancing work and studies, and the flexibility is incredible. The hospital practicum is giving me real-world experience that I know will be invaluable when I graduate."</p>
+                                    <div>
+                                        <p class="font-bold text-primary">Jeffery Asemota</p>
+                                        <p class="text-sm text-gray-600">Current Student • February 2025 Batch (Hybrid)</p>
+                                        <div class="flex mt-2">
+                                            <i class="fas fa-star text-yellow-400"></i>
+                                            <i class="fas fa-star text-yellow-400"></i>
+                                            <i class="fas fa-star text-yellow-400"></i>
+                                            <i class="fas fa-star text-yellow-400"></i>
+                                            <i class="fas fa-star text-yellow-400"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Navigation Arrows -->
+                <button id="prevTestimonial" class="absolute left-0 top-1/2 -translate-y-1/2 -ml-6 md:-ml-12 bg-primary text-white p-4 rounded-full hover:bg-opacity-90 transition shadow-lg">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button id="nextTestimonial" class="absolute right-0 top-1/2 -translate-y-1/2 -mr-6 md:-mr-12 bg-primary text-white p-4 rounded-full hover:bg-opacity-90 transition shadow-lg">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+
+                <!-- Indicators -->
+                <div class="flex justify-center mt-10 space-x-2">
+                    <button class="indicator w-3 h-3 rounded-full bg-primary bg-opacity-30 hover:bg-opacity-60 transition" data-index="0"></button>
+                    <button class="indicator w-3 h-3 rounded-full bg-primary bg-opacity-30 hover:bg-opacity-60 transition" data-index="1"></button>
+                    <button class="indicator w-3 h-3 rounded-full bg-primary bg-opacity-30 hover:bg-opacity-60 transition" data-index="2"></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <span class="text-accent font-bold text-2xl tracking-wider">GALLERY</span>
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Training <span class="text-primary">Sessions</span></h2>
+                <p class="text-xl max-w-2xl mx-auto">Pics of our recent training (updated)</p>
+
+            </div>
+
+            <div class="max-w-5xl mx-auto mb-12 relative overflow-hidden rounded-xl shadow-2xl">
+                <!-- Professional Image Slider -->
+                <div id="gallery-slider" class="relative h-[500px] w-full">
+                    <!-- Slide 1 (Banner) -->
+                    <div class="gallery-slide absolute inset-0 opacity-0 transition-opacity duration-1000 ease-in-out">
+                        <img src="images/banner.png" alt="Training Program Banner" class="w-full h-full object-cover">
+                        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-6">
+                            <h3 class="text-white text-xl font-bold">Ofure Home Caregiver Training</h3>
+                            <p class="text-white/80">Professional training for compassionate caregivers</p>
+                        </div>
+                    </div>
+
+                    <!-- Slide 2 (Class 1) -->
+                    <div class="gallery-slide absolute inset-0 opacity-0 transition-opacity duration-1000 ease-in-out">
+                        <img src="images/class1.png" alt="Class Session 1" class="w-full h-full object-cover">
+                        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-6">
+                            <h3 class="text-white text-xl font-bold">Classroom Instruction</h3>
+                            <p class="text-white/80">Theory lessons with experienced instructors</p>
+                        </div>
+                    </div>
+
+                    <!-- Slide 3 (Class 2) -->
+                    <div class="gallery-slide absolute inset-0 opacity-0 transition-opacity duration-1000 ease-in-out">
+                        <img src="images/class2.png" alt="Class Session 2" class="w-full h-full object-cover">
+                        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-6">
+                            <h3 class="text-white text-xl font-bold">Hands-on Practice</h3>
+                            <p class="text-white/80">Developing practical caregiving techniques</p>
+                        </div>
+                    </div>
+
+                    <!-- Slide 4 (Class 3) -->
+                    <div class="gallery-slide absolute inset-0 opacity-0 transition-opacity duration-1000 ease-in-out">
+                        <img src="images/class3.png" alt="Class Session 3" class="w-full h-full object-cover">
+                        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-6">
+                            <h3 class="text-white text-xl font-bold">Group Learning</h3>
+                            <p class="text-white/80">Collaborative training environment</p>
+                        </div>
+                    </div>
+
+                    <!-- Slide 5 (Class 4) -->
+                    <div class="gallery-slide absolute inset-0 opacity-0 transition-opacity duration-1000 ease-in-out">
+                        <img src="images/class4.png" alt="Class Session 4" class="w-full h-full object-cover">
+                        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-6">
+                            <h3 class="text-white text-xl font-bold">Clinical Skills</h3>
+                            <p class="text-white/80">Learning essential medical procedures</p>
+                        </div>
+                    </div>
+
+                    <!-- Slide 6 (Class 5) -->
+                    <div class="gallery-slide absolute inset-0 opacity-0 transition-opacity duration-1000 ease-in-out">
+                        <img src="images/class5.png" alt="Class Session 5" class="w-full h-full object-cover">
+                        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-6">
+                            <h3 class="text-white text-xl font-bold">Practical Assessment</h3>
+                            <p class="text-white/80">Demonstrating caregiving competencies</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slider Controls -->
+                <button id="prevSlide" class="absolute left-4 top-1/2 -translate-y-1/2 bg-white/20 backdrop-blur-sm text-white p-3 rounded-full hover:bg-white/40 transition z-10">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button id="nextSlide" class="absolute right-4 top-1/2 -translate-y-1/2 bg-white/20 backdrop-blur-sm text-white p-3 rounded-full hover:bg-white/40 transition z-10">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+
+                <!-- Slider Indicators -->
+                <div class="absolute bottom-20 left-0 right-0 flex justify-center gap-2 z-10">
+                    <button class="gallery-indicator w-3 h-3 rounded-full bg-white bg-opacity-50 hover:bg-opacity-100 transition"></button>
+                    <button class="gallery-indicator w-3 h-3 rounded-full bg-white bg-opacity-50 hover:bg-opacity-100 transition"></button>
+                    <button class="gallery-indicator w-3 h-3 rounded-full bg-white bg-opacity-50 hover:bg-opacity-100 transition"></button>
+                    <button class="gallery-indicator w-3 h-3 rounded-full bg-white bg-opacity-50 hover:bg-opacity-100 transition"></button>
+                    <button class="gallery-indicator w-3 h-3 rounded-full bg-white bg-opacity-50 hover:bg-opacity-100 transition"></button>
+                    <button class="gallery-indicator w-3 h-3 rounded-full bg-white bg-opacity-50 hover:bg-opacity-100 transition"></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Faculty & Certification Section -->
+    <section class="py-20 bg-gradient-to-r from-primary to-dark text-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <span class="text-accent font-bold text-2xl tracking-wider">FACULTY & CERTIFICATION</span>
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Expert <span class="text-white">Instructors</span> & Recognition</h2>
+                <p class="text-xl max-w-2xl mx-auto">Learn from experienced professionals and receive government-recognized certification.</p>
+
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto mb-16">
+                <div class="bg-white bg-opacity-10 p-8 rounded-xl backdrop-blur-sm border border-white border-opacity-20">
+                    <div class="text-5xl mb-6 text-accent text-center">
+                        <i class="fas fa-chalkboard-teacher"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4 text-center">Our Faculty</h3>
+                    <p class="text-center mb-6">Our instructors bring decades of clinical experience and academic excellence to the classroom.</p>
+
+                    <div class="space-y-4">
+                        <div class="flex items-center p-3 bg-white bg-opacity-10 rounded-lg">
+                            <div class="bg-accent bg-opacity-20 p-3 rounded-full mr-3">
+                                <i class="fas fa-user-md text-accent"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold">BSc Health Professionals</h4>
+                                <p class="text-sm">Specialized in geriatric and pediatric care</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center p-3 bg-white bg-opacity-10 rounded-lg">
+                            <div class="bg-accent bg-opacity-20 p-3 rounded-full mr-3">
+                                <i class="fas fa-graduation-cap text-accent"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold">BSc Education Specialists</h4>
+                                <p class="text-sm">Expert instructors with teaching credentials</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center p-3 bg-white bg-opacity-10 rounded-lg">
+                            <div class="bg-accent bg-opacity-20 p-3 rounded-full mr-3">
+                                <i class="fas fa-hospital-user text-accent"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold">Practicing Clinicians</h4>
+                                <p class="text-sm">Active healthcare professionals with real-world experience</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white bg-opacity-10 p-8 rounded-xl backdrop-blur-sm border border-white border-opacity-20">
+                    <div class="text-5xl mb-6 text-accent text-center">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4 text-center">Government Certification</h3>
+                    <p class="text-center mb-6">Our program is fully accredited with certificates recognized in Nigeria and abroad.</p>
+
+                    <div class="space-y-4">
+                        <div class="flex items-center p-3 bg-white bg-opacity-10 rounded-lg">
+                            <div class="bg-accent bg-opacity-20 p-3 rounded-full mr-3">
+                                <i class="fas fa-stamp text-accent"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold">Official Accreditation</h4>
+                                <p class="text-sm">External examiners issue government-recognized certificates</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center p-3 bg-white bg-opacity-10 rounded-lg">
+                            <div class="bg-accent bg-opacity-20 p-3 rounded-full mr-3">
+                                <i class="fas fa-globe-africa text-accent"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold">International Recognition</h4>
+                                <p class="text-sm">Credentials accepted by employers worldwide</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center p-3 bg-white bg-opacity-10 rounded-lg">
+                            <div class="bg-accent bg-opacity-20 p-3 rounded-full mr-3">
+                                <i class="fas fa-user-graduate text-accent"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold">Comprehensive Examination</h4>
+                                <p class="text-sm">Rigorous testing ensures graduates meet all standards</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center">
+                <a href="#register" class="inline-block bg-accent text-white px-8 py-4 rounded-full hover:bg-opacity-90 transition duration-300 font-bold text-lg shadow-lg transform hover:scale-105">
+                    <i class="fas fa-user-graduate mr-2"></i> Get Certified
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <span class="text-accent font-bold text-2xl tracking-wider">QUESTIONS?</span>
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Frequently Asked <span class="text-primary">Questions</span></h2>
+
+            </div>
+
+            <div class="max-w-3xl mx-auto space-y-4">
+                <div class="border border-gray-200 rounded-xl overflow-hidden">
+                    <button class="faq-toggle w-full text-left p-6 hover:bg-gray-50 transition">
+                        <div class="flex justify-between items-center">
+                            <h3 class="text-lg font-medium">What are the admission requirements?</h3>
+                            <i class="fas fa-plus text-accent"></i>
+                        </div>
+                        <div class="faq-content hidden pt-4">
+                            <p class="text-gray-600">To enroll in our program, applicants must be at least 18 years old with at minimum a high school diploma or equivalent. No prior caregiving experience is required, but a passion for elderly care is essential. All applicants undergo a basic literacy assessment and interview as part of our screening process.</p>
+                        </div>
+                    </button>
+                </div>
+
+                <div class="border border-gray-200 rounded-xl overflow-hidden">
+                    <button class="faq-toggle w-full text-left p-6 hover:bg-gray-50 transition">
+                        <div class="flex justify-between items-center">
+                            <h3 class="text-lg font-medium">What is the program duration and schedule?</h3>
+                            <i class="fas fa-plus text-accent"></i>
+                        </div>
+                        <div class="faq-content hidden pt-4">
+                            <p class="text-gray-600">Our comprehensive program runs for 3 months (12 weeks). On-site classes meet Monday through Friday from 9am to 3pm. Online students attend live virtual sessions on weekday evenings and have access to recorded materials. The program includes 200+ hours of supervised clinical practice.</p>
+                        </div>
+                    </button>
+                </div>
+
+                <div class="border border-gray-200 rounded-xl overflow-hidden">
+                    <button class="faq-toggle w-full text-left p-6 hover:bg-gray-50 transition">
+                        <div class="flex justify-between items-center">
+                            <h3 class="text-lg font-medium">Is financial aid available?</h3>
+                            <i class="fas fa-plus text-accent"></i>
+                        </div>
+                        <div class="faq-content hidden pt-4">
+                            <p class="text-gray-600">Yes, we offer several financial assistance options including installment payment plans, scholarships for outstanding applicants, and partnerships with loan providers. Additionally, many of our graduates qualify for tuition reimbursement from their future employers.</p>
+                        </div>
+                    </button>
+                </div>
+
+                <div class="border border-gray-200 rounded-xl overflow-hidden">
+                    <button class="faq-toggle w-full text-left p-6 hover:bg-gray-50 transition">
+                        <div class="flex justify-between items-center">
+                            <h3 class="text-lg font-medium">What career support do you provide?</h3>
+                            <i class="fas fa-plus text-accent"></i>
+                        </div>
+                        <div class="faq-content hidden pt-4">
+                            <p class="text-gray-600">Our career support includes resume preparation, interview coaching, job placement assistance, and access to our exclusive job board. We host regular employer networking events and have partnerships with over 50 healthcare facilities that frequently hire our graduates. 92% of our students secure employment within 3 months of graduation.</p>
+                        </div>
+                    </button>
+                </div>
+
+                <div class="border border-gray-200 rounded-xl overflow-hidden">
+                    <button class="faq-toggle w-full text-left p-6 hover:bg-gray-50 transition">
+                        <div class="flex justify-between items-center">
+                            <h3 class="text-lg font-medium">Can I work while attending the program?</h3>
+                            <i class="fas fa-plus text-accent"></i>
+                        </div>
+                        <div class="faq-toggle w-full">
+                        <div class="faq-content hidden pt-4">
+                            <p class="text-gray-600">Many of our students maintain part-time employment while training, especially in our evening online program. The on-site program's intensive schedule makes full-time employment challenging, but some students manage part-time weekend work. We recommend discussing your specific situation with our admissions team during your interview.</p>
+                        </div>
+                    </button>
+                </div>
+            </div>
+
+            <div class="text-center mt-12">
+                <p class="text-lg mb-6">Have more questions? Our admissions team is happy to help.</p>
+                <a href="#contact" class="inline-block bg-primary text-white px-8 py-4 rounded-full hover:bg-opacity-90 transition duration-300 font-bold text-lg shadow-lg transform hover:scale-105">
+                    <i class="fas fa-headset mr-2"></i> Contact Us
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section id="blog" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <span class="text-accent font-bold text-2xl tracking-wider">BLOG & NEWS</span>
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Caregiving <span class="text-primary">Insights</span></h2>
+                <p class="text-xl max-w-2xl mx-auto">Latest articles, tips, and updates from our caregiving experts.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                <!-- Article 1 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden transition transform hover:scale-105 hover:shadow-xl">
+                    <div class="h-48 overflow-hidden">
+                        <img src="images/social-worker-taking-care-senior-woman.jpg" alt="Elderly Care Tips" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center text-sm text-gray-500 mb-2">
+                            <i class="far fa-calendar-alt mr-2"></i>
+                            <span>March 15, 2025</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2 text-primary">Essential Tips for Elderly Care at Home</h3>
+                        <p class="text-gray-600 mb-4">Learn practical strategies to provide quality care for elderly loved ones in a home setting. From creating safe environments to establishing daily routines...</p>
+                        <a href="article1.html" class="inline-flex items-center font-medium text-accent hover:underline">
+                            Read More <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Article 2 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden transition transform hover:scale-105 hover:shadow-xl">
+                    <div class="h-48 overflow-hidden">
+                        <img src="images/medium-shot-smiley-nurse-patient.jpg" alt="Dementia Care Strategies" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center text-sm text-gray-500 mb-2">
+                            <i class="far fa-calendar-alt mr-2"></i>
+                            <span>February 28, 2025</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2 text-primary">Understanding and Managing Dementia Behaviors</h3>
+                        <p class="text-gray-600 mb-4">Discover effective approaches to manage challenging behaviors associated with dementia. This guide provides caregivers with practical techniques...</p>
+                        <a href="article2.html" class="inline-flex items-center font-medium text-accent hover:underline">
+                            Read More <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Article 3 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden transition transform hover:scale-105 hover:shadow-xl">
+                    <div class="h-48 overflow-hidden">
+                        <img src="images/group-african-medical-students-posed-outdoor-against-university-door.jpg" alt="Caregiver Self-Care" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center text-sm text-gray-500 mb-2">
+                            <i class="far fa-calendar-alt mr-2"></i>
+                            <span>January 10, 2025</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2 text-primary">Self-Care Strategies for Caregivers</h3>
+                        <p class="text-gray-600 mb-4">Caregiver burnout is real. Learn essential self-care practices that will help you maintain your physical and mental wellbeing while providing care to others...</p>
+                        <a href="article3.html" class="inline-flex items-center font-medium text-accent hover:underline">
+                            Read More <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-12">
+                <a href="#blog" class="inline-block bg-primary text-white px-8 py-4 rounded-full hover:bg-opacity-90 transition duration-300 font-bold text-lg shadow-lg transform hover:scale-105">
+                    <i class="fas fa-book-reader mr-2"></i> View All Articles
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-secondary">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <span class="text-accent font-bold text-2xl tracking-wider">GET IN TOUCH</span>
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Contact <span class="text-primary">Our Team</span></h2>
+                <p class="text-xl max-w-2xl mx-auto">We're here to answer your questions and guide you through the enrollment process.</p>
+
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto">
+                <div>
+                    <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+                        <div class="p-8">
+                            <h3 class="text-2xl font-bold mb-6 text-primary">Contact Information</h3>
+
+                            <div class="space-y-6">
+                                <div class="flex items-start">
+                                    <div class="bg-primary bg-opacity-10 text-primary p-3 rounded-lg mr-4">
+                                        <i class="fas fa-map-marker-alt"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-lg font-bold mb-1">Our Location</h4>
+                                        <p class="text-gray-600">Ofure Clinic and Orphanage<br>No.5, Egbiri Aruogba Road, GRA, Benin City</p>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-start">
+                                    <div class="bg-primary bg-opacity-10 text-primary p-3 rounded-lg mr-4">
+                                        <i class="fas fa-phone-alt"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-lg font-bold mb-1">Phone</h4>
+                                        <p class="text-gray-600">
+                                            <a href="tel:+2347062354224" class="hover:text-primary transition">+234 706 235 4224</a>
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-start">
+                                    <div class="bg-primary bg-opacity-10 text-primary p-3 rounded-lg mr-4">
+                                        <i class="fas fa-envelope"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-lg font-bold mb-1">Email</h4>
+                                        <p class="text-gray-600">
+                                            <a href="mailto:info@ofurecare.com" class="hover:text-primary transition">info@ofurecare.com</a>
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-start">
+                                    <div class="bg-primary bg-opacity-10 text-primary p-3 rounded-lg mr-4">
+                                        <i class="fas fa-clock"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-lg font-bold mb-1">Hours</h4>
+                                        <p class="text-gray-600">
+                                            Mon-Fri: 8:00 AM - 6:00 PM<br>
+                                            Sat: 9:00 AM - 2:00 PM<br>
+                                            Sun: Closed
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+
+                        <div class="h-64">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d127181.38314843353!2d5.542535371889656!3d6.338927026731288!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1040d3ff0d5b4553%3A0x7a0fdcef6e6d158!2sBenin%20City%2C%20Nigeria!5e0!3m2!1sen!2sus!4v1686074552551!5m2!1sen!2sus" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="bg-white rounded-xl shadow-lg p-8 h-full">
+                        <h3 class="text-2xl font-bold mb-6 text-primary">Send Us a Message</h3>
+
+                        <form id="contactForm" class="space-y-6">
+                            <div>
+                                <label for="contactName" class="block mb-2 font-medium">Your Name <span class="text-accent">*</span></label>
+                                <input type="text" id="contactName" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" required>
+                            </div>
+
+                            <div class="grid md:grid-cols-2 gap-6">
+                                <div>
+                                    <label for="contactEmail" class="block mb-2 font-medium">Email <span class="text-accent">*</span></label>
+                                    <input type="email" id="contactEmail" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" required>
+                                </div>
+                                <div>
+                                    <label for="contactPhone" class="block mb-2 font-medium">Phone</label>
+                                    <input type="tel" id="contactPhone" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+                                </div>
+                            </div>
+
+                            <div>
+                                <label for="contactSubject" class="block mb-2 font-medium">Subject <span class="text-accent">*</span></label>
+                                <select id="contactSubject" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" required>
+                                    <option value="">Select a subject</option>
+                                    <option value="admission">Admission Inquiry</option>
+                                    <option value="program">Program Details</option>
+                                    <option value="career">Career Opportunities</option>
+                                    <option value="partnership">Partnership Inquiry</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+
+                            <div>
+                                <label for="contactMessage" class="block mb-2 font-medium">Message <span class="text-accent">*</span></label>
+                                <textarea id="contactMessage" rows="4" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" required></textarea>
+                            </div>
+
+                            <button type="submit" class="w-full bg-primary text-white px-6 py-4 rounded-lg hover:bg-opacity-90 transition duration-300 font-bold text-lg shadow-lg">
+                                <i class="fas fa-paper-plane mr-2"></i> Send Message
+                            </button>
+
+                            <div id="contactSuccess" class="hidden mt-6 p-4 bg-green-100 text-green-700 rounded-lg text-center">
+                                <i class="fas fa-check-circle text-3xl mb-2 text-green-500"></i>
+                                <p class="font-bold">Message Sent Successfully!</p>
+                                <p class="text-sm">We'll get back to you as soon as possible.</p>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- CTA Section -->
+    <section class="py-16 bg-accent text-white">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-6">Ready to Start Your <span class="text-white">Caregiving</span> Career?</h2>
+            <p class="text-xl max-w-2xl mx-auto mb-8">Join our next cohort and become a certified professional caregiver in just 3 months.</p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#register" class="bg-white text-accent px-8 py-4 rounded-full hover:bg-opacity-90 transition duration-300 font-bold text-lg shadow-lg transform hover:scale-105">
+                    <i class="fas fa-user-plus mr-2"></i> Apply Now
+                </a>
+                <a href="#contact" class="border-2 border-white text-white px-8 py-4 rounded-full hover:bg-white hover:bg-opacity-10 transition duration-300 font-bold text-lg">
+                    <i class="fas fa-headset mr-2"></i> Contact Admissions
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-primary text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <a href="index.html" class="flex items-center space-x-3 mb-4 hover:opacity-90 transition duration-300">
+                        <img src="images/logo.png" alt="Ofure Care Logo" class="h-12 w-auto">
+                        <div>
+                            <h1 class="text-xl font-bold">Ofure Care</h1>
+                            <p class="text-xs opacity-80">WE SURELY CARE</p>
+                        </div>
+                    </a>
+                    <p class="mb-4">Ofure Clinic and Orphanage. Providing exceptional caregiver training and empowering compassionate professionals.</p>
+
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#about" class="hover:text-accent transition">About Us</a></li>
+                        <li><a href="#program" class="hover:text-accent transition">Training Program</a></li>
+                        <li><a href="#register" class="hover:text-accent transition">Apply Now</a></li>
+                        <li><a href="#testimonials" class="hover:text-accent transition">Testimonials</a></li>
+
+                        <li><a href="#contact" class="hover:text-accent transition">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Resources</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#blog" class="hover:text-accent transition smooth-scroll">Caregiving Blog</a></li>
+                        <li><a href="#faq" class="hover:text-accent transition smooth-scroll">FAQs</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Contact Info</h4>
+                    <address class="not-italic">
+                        <p class="mb-2">No.5, Egbiri Aruogba Road, GRA, Benin City</p>
+                        <p class="mb-2"><a href="tel:+2347062354224" class="hover:text-accent transition">+234 706 235 4224</a></p>
+                        <p class="mb-2"><a href="mailto:info@ofurecare.com" class="hover:text-accent transition">info@ofurecare.com</a></p>
+                    </address>
+                </div>
+            </div>
+
+            <div class="pt-8 border-t border-white border-opacity-20">
+                <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+                    <p>&copy; 2025 Ofure Care - Ofure Clinic and Orphanage. All rights reserved.</p>
+                    <div class="flex space-x-6">
+                        <a href="privacy-policy.html" class="hover:text-accent transition text-sm">Privacy Policy</a>
+                        <a href="terms-of-service.html" class="hover:text-accent transition text-sm">Terms of Service</a>
+                        <a href="sitemap.html" class="hover:text-accent transition text-sm">Sitemap</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="backToTop" class="fixed bottom-10 right-10 bg-accent text-white p-4 rounded-full shadow-lg hover:bg-opacity-90 transition opacity-0 invisible">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Lightbox -->
+    <div id="lightbox" class="lightbox">
+        <span class="close">&times;</span>
+        <img id="lightboxImage" class="lightbox-content">
+        <div id="caption" class="text-white text-center mt-4"></div>
+    </div>
+
+    <!-- EmailJS Integration -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+
+    <!-- Main JavaScript -->
+    <script src="main.js"></script>
+</body>
+</html>

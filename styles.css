@@ -1,0 +1,338 @@
+/* Custom Styles */
+:root {
+    --primary: #4f46e5; /* indigo */
+    --primary-dark: #4338ca;
+    --accent: #f59e0b; /* amber */
+    --accent-dark: #d97706;
+    --dark: #1e3d59;
+    --light: #f5f5f5;
+    --gray: #6b7280;
+}
+
+body {
+    scroll-behavior: smooth;
+    font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+    line-height: 1.6;
+}
+
+.hero {
+    background: linear-gradient(135deg, rgba(30, 61, 89, 0.9), rgba(30, 61, 89, 0.7)),
+                url('images/front-view-smiley-nurses-work.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+.lightbox {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    overflow: auto;
+}
+
+.lightbox-content {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 1200px;
+    max-height: 80vh;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.close {
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    color: #fff;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 10000;
+}
+
+.stat-bubble {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.program-card {
+    transition: all 0.3s ease;
+    transform-style: preserve-3d;
+}
+
+.program-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+.testimonial-card {
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Article Page Styles */
+.article-header {
+    position: relative;
+    padding-bottom: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.article-header::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 80px;
+    height: 4px;
+    background-color: var(--accent);
+    border-radius: 2px;
+}
+
+.article-meta {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+    color: var(--gray);
+    font-size: 0.875rem;
+}
+
+.article-meta i {
+    color: var(--accent);
+}
+
+.article-featured-image {
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2.5rem;
+    position: relative;
+}
+
+.article-featured-image img {
+    width: 100%;
+    height: auto;
+    transition: transform 0.5s ease;
+}
+
+.article-featured-image:hover img {
+    transform: scale(1.03);
+}
+
+.article-content h2 {
+    color: var(--primary);
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-top: 2.5rem;
+    margin-bottom: 1.25rem;
+    position: relative;
+    padding-left: 1rem;
+}
+
+.article-content h2::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.25rem;
+    bottom: 0.25rem;
+    width: 4px;
+    background-color: var(--accent);
+    border-radius: 2px;
+}
+
+.article-content h3 {
+    color: var(--dark);
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
+.article-content p {
+    margin-bottom: 1.5rem;
+    font-size: 1.125rem;
+}
+
+.article-content ul,
+.article-content ol {
+    margin-bottom: 1.5rem;
+    padding-left: 1.5rem;
+}
+
+.article-content li {
+    margin-bottom: 0.75rem;
+    position: relative;
+}
+
+.article-content ul li::before {
+    content: '•';
+    color: var(--accent);
+    font-weight: bold;
+    display: inline-block;
+    width: 1em;
+    margin-left: -1em;
+}
+
+.article-content a {
+    color: var(--primary);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.3s ease;
+}
+
+.article-content a:hover {
+    border-color: var(--primary);
+}
+
+.article-author {
+    background-color: #f9fafb;
+    border-radius: 1rem;
+    padding: 1.5rem;
+    margin-top: 3rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.article-author:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+}
+
+.article-author-image {
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.article-navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #e5e7eb;
+}
+
+.article-navigation a {
+    display: inline-flex;
+    align-items: center;
+    color: var(--primary);
+    font-weight: 500;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.article-navigation a:hover {
+    color: var(--accent);
+}
+
+.article-navigation a i {
+    transition: transform 0.3s ease;
+}
+
+.article-navigation a:hover i.fa-arrow-left {
+    transform: translateX(-5px);
+}
+
+.article-navigation a:hover i.fa-arrow-right {
+    transform: translateX(5px);
+}
+
+.related-articles {
+    margin-top: 4rem;
+}
+
+.related-article {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    background-color: #f9fafb;
+    border-radius: 0.75rem;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    color: inherit;
+}
+
+.related-article:hover {
+    background-color: #f3f4f6;
+    transform: translateY(-5px);
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+}
+
+.related-article-image {
+    width: 6rem;
+    height: 6rem;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.related-article-title {
+    font-weight: 600;
+    color: var(--primary);
+    margin-bottom: 0.25rem;
+}
+
+.related-article-excerpt {
+    font-size: 0.875rem;
+    color: var(--gray);
+}
+
+/* Social Sharing */
+.social-sharing {
+    display: flex;
+    gap: 1rem;
+}
+
+.social-sharing a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    background-color: #f3f4f6;
+    color: var(--gray);
+    transition: all 0.3s ease;
+}
+
+.social-sharing a:hover {
+    background-color: var(--primary);
+    color: white;
+    transform: translateY(-3px);
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .hero {
+        background-attachment: scroll;
+    }
+
+    .article-meta {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+
+    .article-navigation {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .social-sharing {
+        margin-top: 1rem;
+    }
+}

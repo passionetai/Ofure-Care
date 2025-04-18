@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Essential Tips for Elderly Care at Home - Ofure Care</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#1E3D59',
+                        secondary: '#F5F5F5',
+                        accent: '#FF6B6B',
+                        dark: '#0F1C2E',
+                        light: '#FFFFFF',
+                        gray: '#6B7280'
+                    },
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif']
+                    },
+                    animation: {
+                        fadeIn: 'fadeIn 1.5s ease-in-out',
+                        float: 'float 6s ease-in-out infinite'
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' }
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="font-sans bg-secondary text-primary">
+    <!-- Header -->
+    <header class="fixed w-full bg-primary text-secondary shadow-lg z-50">
+        <nav class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="index.html" class="flex items-center space-x-3 hover:opacity-90 transition duration-300">
+                <img src="images/logo.png" alt="Ofure Care Logo" class="h-12 w-auto">
+                <div>
+                    <h1 class="text-xl font-bold text-white">Ofure Care</h1>
+                    <p class="text-xs text-white opacity-80">WE SURELY CARE</p>
+                </div>
+            </a>
+
+            <!-- Desktop Navigation -->
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="index.html#about" class="hover:text-accent transition duration-300 flex items-center">
+                    <i class="fas fa-info-circle mr-2"></i> About
+                </a>
+                <a href="index.html#program" class="hover:text-accent transition duration-300 flex items-center">
+                    <i class="fas fa-graduation-cap mr-2"></i> Program
+                </a>
+                <a href="index.html#testimonials" class="hover:text-accent transition duration-300 flex items-center">
+                    <i class="fas fa-quote-left mr-2"></i> Testimonials
+                </a>
+                <a href="index.html#gallery" class="hover:text-accent transition duration-300 flex items-center">
+                    <i class="fas fa-images mr-2"></i> Gallery
+                </a>
+                <a href="index.html#faq" class="hover:text-accent transition duration-300 flex items-center smooth-scroll">
+                    <i class="fas fa-question-circle mr-2"></i> FAQ
+                </a>
+                <a href="index.html#blog" class="hover:text-accent transition duration-300 flex items-center">
+                    <i class="fas fa-blog mr-2"></i> Blog
+                </a>
+                <a href="index.html#contact" class="hover:text-accent transition duration-300 flex items-center">
+                    <i class="fas fa-envelope mr-2"></i> Contact
+                </a>
+                <a href="index.html#register" class="bg-accent text-white px-6 py-2 rounded-full hover:bg-opacity-90 transition duration-300 font-medium flex items-center">
+                    <i class="fas fa-user-plus mr-2"></i> Apply Now
+                </a>
+            </div>
+
+            <!-- Mobile Navigation Button -->
+            <div class="md:hidden flex items-center">
+                <button id="mobile-menu-button" class="text-2xl">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </nav>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-primary absolute w-full left-0 px-4 pb-4 z-40 shadow-lg">
+            <a href="index.html#about" class="block py-3 border-b border-gray-700 hover:text-accent transition duration-300 flex items-center">
+                <i class="fas fa-info-circle mr-3 w-6 text-center"></i> About
+            </a>
+            <a href="index.html#program" class="block py-3 border-b border-gray-700 hover:text-accent transition duration-300 flex items-center">
+                <i class="fas fa-graduation-cap mr-3 w-6 text-center"></i> Program
+            </a>
+            <a href="index.html#testimonials" class="block py-3 border-b border-gray-700 hover:text-accent transition duration-300 flex items-center">
+                <i class="fas fa-quote-left mr-3 w-6 text-center"></i> Testimonials
+            </a>
+            <a href="index.html#gallery" class="block py-3 border-b border-gray-700 hover:text-accent transition duration-300 flex items-center">
+                <i class="fas fa-images mr-3 w-6 text-center"></i> Gallery
+            </a>
+            <a href="index.html#faq" class="block py-3 border-b border-gray-700 hover:text-accent transition duration-300 flex items-center smooth-scroll">
+                <i class="fas fa-question-circle mr-3 w-6 text-center"></i> FAQ
+            </a>
+            <a href="index.html#blog" class="block py-3 border-b border-gray-700 hover:text-accent transition duration-300 flex items-center">
+                <i class="fas fa-blog mr-3 w-6 text-center"></i> Blog
+            </a>
+            <a href="index.html#contact" class="block py-3 border-b border-gray-700 hover:text-accent transition duration-300 flex items-center">
+                <i class="fas fa-envelope mr-3 w-6 text-center"></i> Contact
+            </a>
+            <a href="index.html#register" class="block w-full bg-accent text-white px-6 py-3 rounded-lg hover:bg-opacity-90 transition duration-300 font-medium text-center mt-4 flex justify-center items-center">
+                <i class="fas fa-user-plus mr-2"></i> Apply Now
+            </a>
+        </div>
+    </header>
+
+    <!-- Article Content -->
+    <main class="pt-32 pb-20 bg-secondary">
+        <article class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto bg-white p-8 rounded-xl shadow-lg">
+                <!-- Article Header -->
+                <div class="article-header">
+                    <div class="article-meta">
+                        <div><i class="far fa-calendar-alt mr-2"></i><span>March 15, 2025</span></div>
+                        <div><i class="far fa-folder mr-2"></i><span>Elderly Care</span></div>
+                    </div>
+                    <h1 class="text-4xl md:text-5xl font-bold mb-6 text-primary">Essential Tips for Elderly Care at Home</h1>
+                    <p class="text-xl text-gray-600">Practical strategies to provide quality care for elderly loved ones in a home setting, ensuring their comfort, safety, and dignity.</p>
+                </div>
+
+                <!-- Featured Image -->
+                <div class="article-featured-image">
+                    <img src="images/social-worker-taking-care-senior-woman.jpg" alt="Elderly Care at Home">
+                </div>
+
+                <!-- Article Content -->
+                <div class="article-content prose prose-lg max-w-none">
+                    <h2>Introduction</h2>
+                    <p>Caring for an elderly loved one at home can be both rewarding and challenging. As our parents and relatives age, they often require additional support to maintain their quality of life. This article provides essential tips and strategies for providing effective home care for the elderly, focusing on creating a safe environment, establishing routines, and promoting physical and mental well-being.</p>
+
+                    <h2>Creating a Safe Home Environment</h2>
+                    <p>Safety is paramount when caring for elderly individuals at home. Here are some key modifications to consider:</p>
+
+                    <ul>
+                        <li><strong>Remove tripping hazards:</strong> Clear pathways of cords, rugs, and clutter that could cause falls.</li>
+                        <li><strong>Install grab bars:</strong> Place these in bathrooms, hallways, and beside beds to provide support.</li>
+                        <li><strong>Improve lighting:</strong> Ensure all areas are well-lit, especially stairways and hallways.</li>
+                        <li><strong>Consider a medical alert system:</strong> These devices allow seniors to call for help in case of emergency.</li>
+                        <li><strong>Adapt the bathroom:</strong> Install shower seats, non-slip mats, and raised toilet seats.</li>
+                    </ul>
+
+                    <p>Remember that home modifications don't need to be expensive or extensive. Start with the most critical safety concerns and address others as needed.</p>
+
+                    <h2>Establishing Daily Routines</h2>
+                    <p>Consistent routines provide security and structure for elderly individuals, particularly those with cognitive impairments. Consider these aspects when creating a daily schedule:</p>
+
+                    <ul>
+                        <li><strong>Consistent wake and sleep times:</strong> Regular sleep patterns support overall health.</li>
+                        <li><strong>Medication management:</strong> Create a system for ensuring medications are taken correctly and on time.</li>
+                        <li><strong>Meal planning:</strong> Schedule regular, nutritious meals and snacks throughout the day.</li>
+                        <li><strong>Physical activity:</strong> Incorporate appropriate exercise into each day.</li>
+                        <li><strong>Social interaction:</strong> Plan for regular social engagement, whether in-person or virtual.</li>
+                    </ul>
+
+                    <p>Document the routine and make it visible to all caregivers to ensure consistency of care.</p>
+
+                    <h2>Nutrition and Hydration</h2>
+                    <p>Proper nutrition is essential for maintaining health and preventing complications in elderly individuals. Consider these nutritional guidelines:</p>
+
+                    <ul>
+                        <li><strong>Focus on nutrient-dense foods:</strong> Fruits, vegetables, lean proteins, and whole grains should form the foundation of meals.</li>
+                        <li><strong>Monitor hydration:</strong> Many elderly people don't feel thirst as acutely, so scheduled drinks are important.</li>
+                        <li><strong>Accommodate changing needs:</strong> Adjust food textures for those with swallowing difficulties.</li>
+                        <li><strong>Consider supplements:</strong> Consult with healthcare providers about appropriate vitamin supplements.</li>
+                        <li><strong>Make mealtimes social:</strong> When possible, eat together to encourage better intake.</li>
+                    </ul>
+
+                    <h2>Physical Activity and Exercise</h2>
+                    <p>Regular physical activity is crucial for maintaining mobility, strength, and overall health. Appropriate exercises include:</p>
+
+                    <ul>
+                        <li><strong>Gentle stretching:</strong> Helps maintain flexibility and range of motion.</li>
+                        <li><strong>Walking:</strong> Even short walks provide cardiovascular benefits.</li>
+                        <li><strong>Chair exercises:</strong> Seated movements can benefit those with limited mobility.</li>
+                        <li><strong>Balance activities:</strong> Simple balance exercises can help prevent falls.</li>
+                        <li><strong>Resistance training:</strong> Light weights or resistance bands help maintain muscle mass.</li>
+                    </ul>
+
+                    <p>Always consult with healthcare providers before starting any exercise program, and monitor for signs of fatigue or discomfort.</p>
+
+                    <h2>Mental and Emotional Well-being</h2>
+                    <p>Caring for the emotional and cognitive health of elderly individuals is just as important as addressing physical needs:</p>
+
+                    <ul>
+                        <li><strong>Encourage social connections:</strong> Regular interaction with family, friends, and community members.</li>
+                        <li><strong>Provide mental stimulation:</strong> Puzzles, reading, music, and other engaging activities.</li>
+                        <li><strong>Respect independence:</strong> Allow choices and decision-making whenever possible.</li>
+                        <li><strong>Monitor for depression:</strong> Be alert to signs of withdrawal, sadness, or loss of interest.</li>
+                        <li><strong>Consider spiritual needs:</strong> Support religious or spiritual practices that provide comfort.</li>
+                    </ul>
+
+                    <h2>Caregiver Self-Care</h2>
+                    <p>Providing care for an elderly person can be demanding. To avoid burnout, caregivers should:</p>
+
+                    <ul>
+                        <li><strong>Accept help:</strong> Don't try to do everything alone.</li>
+                        <li><strong>Take breaks:</strong> Regular respite care allows caregivers to recharge.</li>
+                        <li><strong>Join support groups:</strong> Connecting with others in similar situations provides emotional support.</li>
+                        <li><strong>Maintain personal health:</strong> Regular check-ups, proper nutrition, and adequate sleep are essential.</li>
+                        <li><strong>Set realistic expectations:</strong> Acknowledge limitations and adjust expectations accordingly.</li>
+                    </ul>
+
+                    <h2>Conclusion</h2>
+                    <p>Providing home care for elderly loved ones requires patience, knowledge, and dedication. By creating a safe environment, establishing routines, and attending to both physical and emotional needs, caregivers can help ensure the comfort, dignity, and well-being of those in their care. Remember that seeking support and taking care of your own needs are essential components of sustainable caregiving.</p>
+
+
+                </div>
+
+                <!-- Article Navigation -->
+                <div class="article-navigation">
+                    <a href="index.html#blog" class="mb-4 md:mb-0">
+                        <i class="fas fa-arrow-left mr-2"></i> Back to Blog
+                    </a>
+                    <div class="social-sharing">
+                        <a href="#" aria-label="Share on Facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" aria-label="Share on Twitter">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" aria-label="Share on LinkedIn">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#" aria-label="Share via Email">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Related Articles -->
+                <div class="related-articles">
+                    <h3 class="text-2xl font-bold mb-6">Related Articles</h3>
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <a href="article2.html" class="related-article">
+                            <div class="related-article-image">
+                                <img src="images/medium-shot-smiley-nurse-patient.jpg" alt="Dementia Care" class="w-full h-full object-cover">
+                            </div>
+                            <div class="ml-4">
+                                <h4 class="related-article-title">Understanding and Managing Dementia Behaviors</h4>
+                                <p class="related-article-excerpt">Discover effective approaches to manage challenging behaviors associated with dementia.</p>
+                            </div>
+                        </a>
+                        <a href="article3.html" class="related-article">
+                            <div class="related-article-image">
+                                <img src="images/group-african-medical-students-posed-outdoor-against-university-door.jpg" alt="Caregiver Self-Care" class="w-full h-full object-cover">
+                            </div>
+                            <div class="ml-4">
+                                <h4 class="related-article-title">Self-Care Strategies for Caregivers</h4>
+                                <p class="related-article-excerpt">Learn essential self-care practices that will help you maintain your wellbeing while providing care.</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </article>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-primary text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <a href="index.html" class="flex items-center space-x-3 mb-4 hover:opacity-90 transition duration-300">
+                        <img src="images/logo.png" alt="Ofure Care Logo" class="h-12 w-auto">
+                        <div>
+                            <h1 class="text-xl font-bold">Ofure Care</h1>
+                            <p class="text-xs opacity-80">WE SURELY CARE</p>
+                        </div>
+                    </a>
+                    <p class="mb-4">Ofure Clinic and Orphanage. Providing exceptional caregiver training and empowering compassionate professionals.</p>
+
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="index.html#about" class="hover:text-accent transition">About Us</a></li>
+                        <li><a href="index.html#program" class="hover:text-accent transition">Training Program</a></li>
+                        <li><a href="index.html#register" class="hover:text-accent transition">Apply Now</a></li>
+                        <li><a href="index.html#testimonials" class="hover:text-accent transition">Testimonials</a></li>
+                        <li><a href="index.html#contact" class="hover:text-accent transition">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Resources</h4>
+                    <ul class="space-y-2">
+                        <li><a href="index.html#blog" class="hover:text-accent transition smooth-scroll">Caregiving Blog</a></li>
+                        <li><a href="index.html#faq" class="hover:text-accent transition smooth-scroll">FAQs</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Contact Info</h4>
+                    <address class="not-italic">
+                        <p class="mb-2">No.5, Egbiri Aruogba Road, GRA, Benin City</p>
+                        <p class="mb-2"><a href="tel:+2347062354224" class="hover:text-accent transition">+234 706 235 4224</a></p>
+                        <p class="mb-2"><a href="mailto:info@ofurecare.com" class="hover:text-accent transition">info@ofurecare.com</a></p>
+                    </address>
+                </div>
+            </div>
+
+            <div class="pt-8 border-t border-white border-opacity-20">
+                <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+                    <p>&copy; 2025 Ofure Care - Ofure Clinic and Orphanage. All rights reserved.</p>
+                    <div class="flex space-x-6">
+                        <a href="#" class="hover:text-accent transition text-sm">Privacy Policy</a>
+                        <a href="#" class="hover:text-accent transition text-sm">Terms of Service</a>
+                        <a href="#" class="hover:text-accent transition text-sm">Sitemap</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="backToTop" class="fixed bottom-10 right-10 bg-accent text-white p-4 rounded-full shadow-lg hover:bg-opacity-90 transition opacity-0 invisible">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script src="main.js"></script>
+</body>
+</html>
