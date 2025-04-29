@@ -296,17 +296,62 @@ function startCounterAnimation() {
     });
 }
 
+// reCAPTCHA widget IDs
+let registrationRecaptchaWidgetId;
+let contactRecaptchaWidgetId;
+
+// Function to handle reCAPTCHA rendering
+function onRecaptchaLoad() {
+    // Render reCAPTCHA for registration form
+    const registrationRecaptcha = document.querySelector('#registrationForm .g-recaptcha');
+    if (registrationRecaptcha) {
+        registrationRecaptchaWidgetId = grecaptcha.render(registrationRecaptcha, {
+            'sitekey': '6LfkzScrAAAAAPsby-uLG6xEXJ39Jadkih1YD8Aa'
+        });
+        registrationRecaptcha.setAttribute('data-widget-id', registrationRecaptchaWidgetId);
+    }
+
+    // Render reCAPTCHA for contact form
+    const contactRecaptcha = document.querySelector('#contactForm .g-recaptcha');
+    if (contactRecaptcha) {
+        contactRecaptchaWidgetId = grecaptcha.render(contactRecaptcha, {
+            'sitekey': '6LfkzScrAAAAAPsby-uLG6xEXJ39Jadkih1YD8Aa'
+        });
+        contactRecaptcha.setAttribute('data-widget-id', contactRecaptchaWidgetId);
+    }
+}
+
+// Make the function globally accessible for reCAPTCHA
+window.onRecaptchaLoad = onRecaptchaLoad;
+
 // EmailJS Integration
 document.addEventListener('DOMContentLoaded', function() {
-    // Initialize EmailJS with your public key
-    emailjs.init("Fn14pgrjNZVN6PMyb"); // Replace with your actual Public Key
+    // Check if EmailJS is loaded and initialize with your public key
+    if (typeof emailjs !== 'undefined') {
+        try {
+            emailjs.init("Fn14pgrjNZVN6PMyb");
+            console.log("EmailJS initialized with public key: Fn14pgrjNZVN6PMyb");
+        } catch (error) {
+            console.error("Error initializing EmailJS:", error);
+        }
+    } else {
+        console.error("EmailJS library not loaded. Please check the script inclusion in the HTML.");
+    }
 
     // Registration Form Handling
     const registrationForm = document.getElementById('registrationForm');
     if (registrationForm) {
         registrationForm.addEventListener('submit', function(e) {
             e.preventDefault();
+
+            // Get references to success and error message elements
             const formSuccess = document.getElementById('formSuccess');
+            const formError = document.getElementById('formError');
+            const errorDetails = document.getElementById('formErrorDetails');
+
+            // Hide any previous error/success messages
+            formSuccess.classList.add('hidden');
+            formError.classList.add('hidden');
 
             // Show loading state
             const submitBtn = this.querySelector('button[type="submit"]');
@@ -314,58 +359,89 @@ document.addEventListener('DOMContentLoaded', function() {
             submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting...';
             submitBtn.disabled = true;
 
+            // Get reCAPTCHA response - find the reCAPTCHA in this form
+            const recaptchaWidget = registrationForm.querySelector('.g-recaptcha');
+            const recaptchaResponse = recaptchaWidget ? grecaptcha.getResponse(recaptchaWidget.getAttribute('data-widget-id') || 0) : grecaptcha.getResponse();
+
+            // Log reCAPTCHA response for debugging
+            console.log('reCAPTCHA response length:', recaptchaResponse ? recaptchaResponse.length : 0);
+
+            // Check if reCAPTCHA is completed
+            if (!recaptchaResponse) {
+                alert("Please complete the reCAPTCHA verification.");
+                submitBtn.innerHTML = originalBtnText;
+                submitBtn.disabled = false;
+                return;
+            }
+
             // Get all form values
             const templateParams = {
                 from_name: document.getElementById('fullName').value,
-                to_name: "Ofure Clinic and Orphanage",
+                to_name: "Ofure Care Giver Institute",
                 reply_to: document.getElementById('email').value,
                 fullName: document.getElementById('fullName').value,
                 email: document.getElementById('email').value,
                 phone: document.getElementById('phone').value,
                 education: document.getElementById('education').value,
-                experience: document.querySelector('input[name="experience"]:checked')?.value || 'Not specified',
                 format: document.querySelector('input[name="format"]:checked')?.value || 'Not specified',
-                motivation: document.getElementById('motivation').value
+                motivation: document.getElementById('motivation').value,
+                'g-recaptcha-response': recaptchaResponse
             };
 
-            // Send email using EmailJS - using try/catch for better error handling
-            try {
-                // Log the parameters being sent (for debugging)
-                console.log('Sending registration with params:', templateParams);
+            // Define service and template IDs
+            const serviceID = 'service_ofurecaregivers';
+            const templateID = 'template_registration';
 
-                // Send the email - make sure service_id and template_id match your EmailJS account
-                emailjs.send('service_ofurecare', 'template_registration', templateParams)
-                    .then(function(response) {
-                        console.log('Registration email sent successfully:', response);
-                        // Show success message
-                        formSuccess.classList.remove('hidden');
-                        registrationForm.reset();
+            // Log the parameters for debugging
+            console.log('Sending registration with params:', templateParams);
+            console.log('Using service ID:', serviceID);
+            console.log('Using template ID:', templateID);
 
-                        // Restore button
-                        submitBtn.innerHTML = originalBtnText;
-                        submitBtn.disabled = false;
+            // Send the email using EmailJS
+            emailjs.send(serviceID, templateID, templateParams)
+                .then(function(response) {
+                    console.log('Registration email sent successfully:', response);
 
-                        // Scroll to success message
-                        setTimeout(() => {
-                            formSuccess.scrollIntoView({ behavior: 'smooth' });
-                        }, 100);
-                    })
-                    .catch(function(error) {
-                        console.error('Error sending registration email:', error);
-                        alert('Sorry, there was an error submitting your application. Please try again later.');
+                    // Show success message
+                    formSuccess.classList.remove('hidden');
+                    registrationForm.reset();
 
-                        // Restore button
-                        submitBtn.innerHTML = originalBtnText;
-                        submitBtn.disabled = false;
-                    });
-            } catch (error) {
-                console.error('Exception during email sending:', error);
-                alert('Sorry, there was an error submitting your application. Please try again later.');
+                    // Reset reCAPTCHA
+                    if (typeof registrationRecaptchaWidgetId !== 'undefined') {
+                        grecaptcha.reset(registrationRecaptchaWidgetId);
+                    } else {
+                        grecaptcha.reset();
+                    }
 
-                // Restore button
-                submitBtn.innerHTML = originalBtnText;
-                submitBtn.disabled = false;
-            }
+                    // Restore button
+                    submitBtn.innerHTML = originalBtnText;
+                    submitBtn.disabled = false;
+
+                    // Scroll to success message
+                    setTimeout(() => {
+                        formSuccess.scrollIntoView({ behavior: 'smooth' });
+                    }, 100);
+                })
+                .catch(function(error) {
+                    console.error('Error sending registration email:', error);
+                    console.log('Error details:', JSON.stringify(error));
+
+                    // Add error details to the error message
+                    if (errorDetails) {
+                        errorDetails.textContent = 'Error: ' + (error.text || error.message || 'Unknown error');
+                    }
+
+                    formError.classList.remove('hidden');
+
+                    // Restore button
+                    submitBtn.innerHTML = originalBtnText;
+                    submitBtn.disabled = false;
+
+                    // Scroll to error message
+                    setTimeout(() => {
+                        formError.scrollIntoView({ behavior: 'smooth' });
+                    }, 100);
+                });
         });
     }
 
@@ -375,63 +451,103 @@ document.addEventListener('DOMContentLoaded', function() {
         contactForm.addEventListener('submit', function(e) {
             e.preventDefault();
 
+            // Get references to success and error message elements
+            const contactSuccess = document.getElementById('contactSuccess');
+            const contactError = document.getElementById('contactError');
+            const errorDetails = document.getElementById('contactErrorDetails');
+
+            // Hide any previous error/success messages
+            contactSuccess.classList.add('hidden');
+            contactError.classList.add('hidden');
+
             // Show loading state
             const submitBtn = this.querySelector('button[type="submit"]');
             const originalBtnText = submitBtn.innerHTML;
             submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
             submitBtn.disabled = true;
 
+            // Get reCAPTCHA response - find the reCAPTCHA in this form
+            const recaptchaWidget = contactForm.querySelector('.g-recaptcha');
+            const recaptchaResponse = recaptchaWidget ? grecaptcha.getResponse(recaptchaWidget.getAttribute('data-widget-id') || 0) : grecaptcha.getResponse();
+
+            // Log reCAPTCHA response for debugging
+            console.log('Contact form reCAPTCHA response length:', recaptchaResponse ? recaptchaResponse.length : 0);
+
+            // Check if reCAPTCHA is completed
+            if (!recaptchaResponse) {
+                alert("Please complete the reCAPTCHA verification.");
+                submitBtn.innerHTML = originalBtnText;
+                submitBtn.disabled = false;
+                return;
+            }
+
             // Get form values
             const templateParams = {
                 from_name: document.getElementById('contactName').value,
-                to_name: "Ofure Clinic and Orphanage",
+                to_name: "Ofure Care Giver Institute",
                 reply_to: document.getElementById('contactEmail').value,
                 name: document.getElementById('contactName').value,
                 email: document.getElementById('contactEmail').value,
                 phone: document.getElementById('contactPhone').value || 'Not provided',
                 subject: document.getElementById('contactSubject').value,
-                message: document.getElementById('contactMessage').value
+                message: document.getElementById('contactMessage').value,
+                'g-recaptcha-response': recaptchaResponse
             };
 
-            // Send email using EmailJS - using try/catch for better error handling
-            try {
-                // Log the parameters being sent (for debugging)
-                console.log('Sending contact form with params:', templateParams);
+            // Define service and template IDs
+            const serviceID = 'service_ofurecaregivers';
+            const templateID = 'template_contact';
 
-                // Send the email - make sure service_id and template_id match your EmailJS account
-                emailjs.send('service_ofurecare', 'template_contact', templateParams)
-                    .then(function(response) {
-                        console.log('Contact email sent successfully:', response);
-                        // Show success message
-                        const contactSuccess = document.getElementById('contactSuccess');
-                        contactSuccess.classList.remove('hidden');
-                        contactForm.reset();
+            // Log the parameters for debugging
+            console.log('Sending contact form with params:', templateParams);
+            console.log('Using service ID:', serviceID);
+            console.log('Using template ID:', templateID);
 
-                        // Restore button
-                        submitBtn.innerHTML = originalBtnText;
-                        submitBtn.disabled = false;
+            // Send the email using EmailJS
+            emailjs.send(serviceID, templateID, templateParams)
+                .then(function(response) {
+                    console.log('Contact email sent successfully:', response);
 
-                        // Scroll to success message
-                        setTimeout(() => {
-                            contactSuccess.scrollIntoView({ behavior: 'smooth' });
-                        }, 100);
-                    })
-                    .catch(function(error) {
-                        console.error('Error sending contact email:', error);
-                        alert('Sorry, there was an error sending your message. Please try again later.');
+                    // Show success message
+                    contactSuccess.classList.remove('hidden');
+                    contactForm.reset();
 
-                        // Restore button
-                        submitBtn.innerHTML = originalBtnText;
-                        submitBtn.disabled = false;
-                    });
-            } catch (error) {
-                console.error('Exception during email sending:', error);
-                alert('Sorry, there was an error sending your message. Please try again later.');
+                    // Reset reCAPTCHA
+                    if (typeof contactRecaptchaWidgetId !== 'undefined') {
+                        grecaptcha.reset(contactRecaptchaWidgetId);
+                    } else {
+                        grecaptcha.reset();
+                    }
 
-                // Restore button
-                submitBtn.innerHTML = originalBtnText;
-                submitBtn.disabled = false;
-            }
+                    // Restore button
+                    submitBtn.innerHTML = originalBtnText;
+                    submitBtn.disabled = false;
+
+                    // Scroll to success message
+                    setTimeout(() => {
+                        contactSuccess.scrollIntoView({ behavior: 'smooth' });
+                    }, 100);
+                })
+                .catch(function(error) {
+                    console.error('Error sending contact email:', error);
+                    console.log('Contact error details:', JSON.stringify(error));
+
+                    // Add error details to the error message
+                    if (errorDetails) {
+                        errorDetails.textContent = 'Error: ' + (error.text || error.message || 'Unknown error');
+                    }
+
+                    contactError.classList.remove('hidden');
+
+                    // Restore button
+                    submitBtn.innerHTML = originalBtnText;
+                    submitBtn.disabled = false;
+
+                    // Scroll to error message
+                    setTimeout(() => {
+                        contactError.scrollIntoView({ behavior: 'smooth' });
+                    }, 100);
+                });
         });
     }
 });
