@@ -1,4 +1,4 @@
-// Mobile Menu Toggle
+﻿// Mobile Menu Toggle
 const mobileMenuButton = document.getElementById('mobile-menu-button');
 const mobileMenu = document.getElementById('mobile-menu');
 
@@ -300,6 +300,9 @@ function startCounterAnimation() {
 let registrationRecaptchaWidgetId;
 let contactRecaptchaWidgetId;
 
+// Dry run mode: add ?dryrun=1 to URL to simulate sends without contacting EmailJS or requiring reCAPTCHA
+const DRY_RUN = new URLSearchParams(window.location.search).has('dryrun');
+
 // Function to handle reCAPTCHA rendering
 function onRecaptchaLoad() {
     // Render reCAPTCHA for registration form
@@ -329,8 +332,8 @@ document.addEventListener('DOMContentLoaded', function() {
     // Check if EmailJS is loaded and initialize with your public key
     if (typeof emailjs !== 'undefined') {
         try {
-            emailjs.init("Fn14pgrjNZVN6PMyb");
-            console.log("EmailJS initialized with public key: Fn14pgrjNZVN6PMyb");
+            emailjs.init("RxVhlQSh4EgtKpWec");
+            console.log("EmailJS initialized with public key: RxVhlQSh4EgtKpWec");
         } catch (error) {
             console.error("Error initializing EmailJS:", error);
         }
@@ -366,8 +369,8 @@ document.addEventListener('DOMContentLoaded', function() {
             // Log reCAPTCHA response for debugging
             console.log('reCAPTCHA response length:', recaptchaResponse ? recaptchaResponse.length : 0);
 
-            // Check if reCAPTCHA is completed
-            if (!recaptchaResponse) {
+            // Check if reCAPTCHA is completed (skip in DRY_RUN)
+            if (!recaptchaResponse && !DRY_RUN) {
                 alert("Please complete the reCAPTCHA verification.");
                 submitBtn.innerHTML = originalBtnText;
                 submitBtn.disabled = false;
@@ -389,15 +392,29 @@ document.addEventListener('DOMContentLoaded', function() {
             };
 
             // Define service and template IDs
-            const serviceID = 'service_ofurecaregivers';
-            const templateID = 'template_registration';
+            const serviceID = 'service_wnjrws2';
+            const templateID = 'template_2lraz05';
 
             // Log the parameters for debugging
             console.log('Sending registration with params:', templateParams);
             console.log('Using service ID:', serviceID);
             console.log('Using template ID:', templateID);
 
-            // Send the email using EmailJS
+            // Send the email using EmailJS (or simulate in DRY_RUN)
+            if (DRY_RUN) {
+                console.log('DRY RUN: would send registration', { serviceID, templateID, templateParams });
+                formSuccess.classList.remove('hidden');
+                registrationForm.reset();
+                if (typeof registrationRecaptchaWidgetId !== 'undefined') {
+                    grecaptcha.reset(registrationRecaptchaWidgetId);
+                } else {
+                    grecaptcha.reset();
+                }
+                submitBtn.innerHTML = originalBtnText;
+                submitBtn.disabled = false;
+                setTimeout(() => { formSuccess.scrollIntoView({ behavior: 'smooth' }); }, 100);
+                return;
+            }
             emailjs.send(serviceID, templateID, templateParams)
                 .then(function(response) {
                     console.log('Registration email sent successfully:', response);
@@ -473,8 +490,8 @@ document.addEventListener('DOMContentLoaded', function() {
             // Log reCAPTCHA response for debugging
             console.log('Contact form reCAPTCHA response length:', recaptchaResponse ? recaptchaResponse.length : 0);
 
-            // Check if reCAPTCHA is completed
-            if (!recaptchaResponse) {
+            // Check if reCAPTCHA is completed (skip in DRY_RUN)
+            if (!recaptchaResponse && !DRY_RUN) {
                 alert("Please complete the reCAPTCHA verification.");
                 submitBtn.innerHTML = originalBtnText;
                 submitBtn.disabled = false;
@@ -495,15 +512,29 @@ document.addEventListener('DOMContentLoaded', function() {
             };
 
             // Define service and template IDs
-            const serviceID = 'service_ofurecaregivers';
-            const templateID = 'template_contact';
+            const serviceID = 'service_wnjrws2';
+            const templateID = 'template_qajy4gj';
 
             // Log the parameters for debugging
             console.log('Sending contact form with params:', templateParams);
             console.log('Using service ID:', serviceID);
             console.log('Using template ID:', templateID);
 
-            // Send the email using EmailJS
+            // Send the email using EmailJS (or simulate in DRY_RUN)
+            if (DRY_RUN) {
+                console.log('DRY RUN: would send contact', { serviceID, templateID, templateParams });
+                contactSuccess.classList.remove('hidden');
+                contactForm.reset();
+                if (typeof contactRecaptchaWidgetId !== 'undefined') {
+                    grecaptcha.reset(contactRecaptchaWidgetId);
+                } else {
+                    grecaptcha.reset();
+                }
+                submitBtn.innerHTML = originalBtnText;
+                submitBtn.disabled = false;
+                setTimeout(() => { contactSuccess.scrollIntoView({ behavior: 'smooth' }); }, 100);
+                return;
+            }
             emailjs.send(serviceID, templateID, templateParams)
                 .then(function(response) {
                     console.log('Contact email sent successfully:', response);
@@ -550,6 +581,24 @@ document.addEventListener('DOMContentLoaded', function() {
                 });
         });
     }
+
+// Training Program random background image
+(function(){
+    const section = document.getElementById('trainingProgram');
+    if(!section) return;
+    const images = [
+        'images/front-view-smiley-nurses-work.jpg',
+        'images/medium-shot-smiley-nurse-patient.jpg',
+        'images/side-view-smiley-nurse-patient.jpg',
+        'images/social-worker-taking-care-senior-woman.jpg',
+        'images/group-african-medical-students-posed-outdoor-against-university-door.jpg',
+        'images/class1.png','images/class2.png','images/class3.png','images/class4.png','images/class5.png'
+    ];
+    const img = images[Math.floor(Math.random() * images.length)];
+    section.style.backgroundImage = `url('${img}')`;
+})();
+
+
 });
 
 
