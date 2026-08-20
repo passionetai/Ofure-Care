@@ -16,7 +16,7 @@
  */
 
 // Public site key. Safe to expose. The SECRET key lives in Cloudflare, never here.
-const RECAPTCHA_SITE_KEY = "6Le4zY8tAAAAAJi6yguSAIV8QPoab2FzRlbXQ9PW";
+const RECAPTCHA_SITE_KEY = "6LcP9Y8tAAAAACu7BNaJObB8Gh_d4V1cXMmiSg4R";
 
 const ENDPOINT = "/api/form";
 
