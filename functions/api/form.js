@@ -157,21 +157,13 @@ export async function onRequestPost({ request, env }) {
   }
 
   if (!captcha || captcha.success !== true) {
-    console.error("Turnstile rejected:", JSON.stringify(captcha));
-    // TEMPORARY DIAGNOSTICS - remove the `debug` block once this works
+    console.error(
+      "Turnstile rejected:",
+      JSON.stringify(captcha),
+      captchaError || ""
+    );
     return json(
-      {
-        ok: false,
-        error: "Verification failed. Please try again.",
-        debug: {
-          secretPresent: Boolean(env.TURNSTILE_SECRET),
-          secretLength: (env.TURNSTILE_SECRET || "").length,
-          tokenPresent: Boolean(token),
-          tokenLength: token.length,
-          fetchError: captchaError,
-          cloudflareSaid: captcha
-        }
-      },
+      { ok: false, error: "Verification failed. Please try again." },
       400
     );
   }
@@ -211,5 +203,3 @@ export async function onRequestPost({ request, env }) {
 
   return json({ ok: true });
 }
-// redeploy
-// redeploy
