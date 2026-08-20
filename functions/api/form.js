@@ -137,25 +137,41 @@ export async function onRequestPost({ request, env }) {
   }
 
   // Verify Turnstile server side. Doing this in the browser proves nothing.
+  const token = data["cf-turnstile-response"] || "";
+
   let captcha = null;
+  let captchaError = null;
   try {
     captcha = await fetch(CAPTCHA_ENDPOINT, {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        secret: env.TURNSTILE_SECRET,
-        response: data["cf-turnstile-response"] || "",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: new URLSearchParams({
+        secret: env.TURNSTILE_SECRET || "",
+        response: token,
         remoteip: request.headers.get("CF-Connecting-IP") || ""
       })
     }).then((r) => r.json());
   } catch (err) {
+    captchaError = String(err);
     console.error("Turnstile request failed:", err);
   }
 
   if (!captcha || captcha.success !== true) {
     console.error("Turnstile rejected:", JSON.stringify(captcha));
+    // TEMPORARY DIAGNOSTICS - remove the `debug` block once this works
     return json(
-      { ok: false, error: "Verification failed. Please try again." },
+      {
+        ok: false,
+        error: "Verification failed. Please try again.",
+        debug: {
+          secretPresent: Boolean(env.TURNSTILE_SECRET),
+          secretLength: (env.TURNSTILE_SECRET || "").length,
+          tokenPresent: Boolean(token),
+          tokenLength: token.length,
+          fetchError: captchaError,
+          cloudflareSaid: captcha
+        }
+      },
       400
     );
   }
