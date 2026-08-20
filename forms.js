@@ -4,24 +4,21 @@
  * Replaces every trace of EmailJS. Posts both forms to /api/form, which is
  * the Cloudflare Pages Function that talks to Resend.
  *
- * Load it AFTER the reCAPTCHA script in your HTML:
+ * Load it BEFORE the Turnstile script in your HTML:
  *   <script src="forms.js"></script>
- *   <script src="https://www.google.com/recaptcha/api.js?onload=onRecaptchaLoad&render=explicit" async defer></script>
+ *   <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?onload=onTurnstileLoad&render=explicit" async defer></script>
  *
  * Then delete from main.js:
- *   - the EmailJS <script> tag and emailjs.init(...) call
- *   - both emailjs.send(...) blocks
- *   - the DRY_RUN constant and every check that uses it
- *   - the old onRecaptchaLoad function and the two widget id variables
+ *   - every EmailJS script tag, init call and send block
  */
 
 // Public site key. Safe to expose. The SECRET key lives in Cloudflare, never here.
-const RECAPTCHA_SITE_KEY = "6LcP9Y8tAAAAACu7BNaJObB8Gh_d4V1cXMmiSg4R";
+const TURNSTILE_SITE_KEY = "0x4AAAAAAEWzaAlIsbpIv2MQ";
 
 const ENDPOINT = "/api/form";
 
-let registrationRecaptchaWidgetId;
-let contactRecaptchaWidgetId;
+let registrationWidgetId;
+let contactWidgetId;
 
 const FORM_CONFIG = [
   {
@@ -31,9 +28,9 @@ const FORM_CONFIG = [
     errorId: "formError",
     errorDetailId: "formErrorDetails",
     sendingLabel: "Sending application...",
-    getWidgetId: () => registrationRecaptchaWidgetId,
+    getWidgetId: () => registrationWidgetId,
     setWidgetId: (id) => {
-      registrationRecaptchaWidgetId = id;
+      registrationWidgetId = id;
     }
   },
   {
@@ -43,24 +40,24 @@ const FORM_CONFIG = [
     errorId: "contactError",
     errorDetailId: "contactErrorDetails",
     sendingLabel: "Sending message...",
-    getWidgetId: () => contactRecaptchaWidgetId,
+    getWidgetId: () => contactWidgetId,
     setWidgetId: (id) => {
-      contactRecaptchaWidgetId = id;
+      contactWidgetId = id;
     }
   }
 ];
 
-// Called by the reCAPTCHA script once it loads. Must stay on window.
-window.onRecaptchaLoad = function onRecaptchaLoad() {
+// Called by the Turnstile script once it loads. Must stay on window.
+window.onTurnstileLoad = function onTurnstileLoad() {
   FORM_CONFIG.forEach((config) => {
     const form = document.getElementById(config.id);
     if (!form) return;
 
-    const target = form.querySelector(".g-recaptcha");
+    const target = form.querySelector(".cf-turnstile");
     if (!target || target.childElementCount > 0) return;
 
     config.setWidgetId(
-      grecaptcha.render(target, { sitekey: RECAPTCHA_SITE_KEY })
+      turnstile.render(target, { sitekey: TURNSTILE_SITE_KEY })
     );
   });
 };
@@ -103,13 +100,12 @@ function attach(config) {
 
     const widgetId = config.getWidgetId();
     const token =
-      typeof grecaptcha !== "undefined"
-        ? grecaptcha.getResponse(widgetId)
-        : "";
+      typeof turnstile !== "undefined" ? turnstile.getResponse(widgetId) : "";
 
     if (!token) {
       if (errorDetail) {
-        errorDetail.textContent = "Complete the reCAPTCHA and try again.";
+        errorDetail.textContent =
+          "Wait for the verification check to finish, then try again.";
       }
       show(error);
       return;
@@ -125,7 +121,7 @@ function attach(config) {
     try {
       const payload = collect(form);
       payload.formType = config.type;
-      payload["g-recaptcha-response"] = token;
+      payload["cf-turnstile-response"] = token;
 
       const response = await fetch(ENDPOINT, {
         method: "POST",
@@ -157,8 +153,8 @@ function attach(config) {
       }
       show(error);
     } finally {
-      if (typeof grecaptcha !== "undefined") {
-        grecaptcha.reset(config.getWidgetId());
+      if (typeof turnstile !== "undefined") {
+        turnstile.reset(config.getWidgetId());
       }
       if (button) {
         button.disabled = false;

@@ -6,7 +6,7 @@
  *
  * Required environment variables (set as SECRETS in the Cloudflare dashboard):
  *   RESEND_API_KEY   re_xxxxxxxxxxxx
- *   RECAPTCHA_SECRET the secret key from the reCAPTCHA admin console
+ *   TURNSTILE_SECRET the secret key from Cloudflare Turnstile
  *   CONTACT_INBOX    where notifications land, e.g. ofurecare.enquiries@gmail.com
  *   MAIL_FROM        e.g. Ofure Care Website <noreply@ofurecare.com>
  *
@@ -15,7 +15,8 @@
  */
 
 const RESEND_ENDPOINT = "https://api.resend.com/emails";
-const CAPTCHA_ENDPOINT = "https://www.google.com/recaptcha/api/siteverify";
+const CAPTCHA_ENDPOINT =
+  "https://challenges.cloudflare.com/turnstile/v0/siteverify";
 const MAX_FIELD_LENGTH = 5000;
 
 const FORMS = {
@@ -135,25 +136,26 @@ export async function onRequestPost({ request, env }) {
     return json({ ok: false, error: "That submission is too long." }, 400);
   }
 
-  // Verify reCAPTCHA server side. Doing this in the browser proves nothing.
+  // Verify Turnstile server side. Doing this in the browser proves nothing.
   let captcha = null;
   try {
     captcha = await fetch(CAPTCHA_ENDPOINT, {
       method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: new URLSearchParams({
-        secret: env.RECAPTCHA_SECRET,
-        response: data["g-recaptcha-response"] || "",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        secret: env.TURNSTILE_SECRET,
+        response: data["cf-turnstile-response"] || "",
         remoteip: request.headers.get("CF-Connecting-IP") || ""
       })
     }).then((r) => r.json());
   } catch (err) {
-    console.error("reCAPTCHA request failed:", err);
+    console.error("Turnstile request failed:", err);
   }
 
   if (!captcha || captcha.success !== true) {
+    console.error("Turnstile rejected:", JSON.stringify(captcha));
     return json(
-      { ok: false, error: "Complete the reCAPTCHA and try again." },
+      { ok: false, error: "Verification failed. Please try again." },
       400
     );
   }

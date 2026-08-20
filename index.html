@@ -515,8 +515,8 @@
                             <input type="text" id="reg-website" name="website" tabindex="-1" autocomplete="off">
                         </div>
 
-                        <!-- Google reCAPTCHA -->
-                        <div class="g-recaptcha"></div>
+                        <!-- Cloudflare Turnstile -->
+                        <div class="cf-turnstile"></div>
 
                         <button type="submit" class="w-full bg-primary text-white px-6 py-4 rounded-lg hover:bg-opacity-90 transition duration-300 font-bold text-lg shadow-lg flex items-center justify-center">
                             <i class="fas fa-paper-plane mr-2"></i> Send Application
@@ -1123,8 +1123,8 @@
                                 <input type="text" id="contact-website" name="website" tabindex="-1" autocomplete="off">
                             </div>
 
-                            <!-- Google reCAPTCHA -->
-                            <div class="g-recaptcha"></div>
+                            <!-- Cloudflare Turnstile -->
+                            <div class="cf-turnstile"></div>
 
                             <button type="submit" class="w-full bg-primary text-white px-6 py-4 rounded-lg hover:bg-opacity-90 transition duration-300 font-bold text-lg shadow-lg">
                                 <i class="fas fa-paper-plane mr-2"></i> Send Message
@@ -1234,11 +1234,11 @@
         <div id="caption" class="text-white text-center mt-4"></div>
     </div>
 
-    <!-- Form handling: must load before reCAPTCHA, which calls onRecaptchaLoad -->
+    <!-- Form handling: must load before Turnstile, which calls onTurnstileLoad -->
     <script src="forms.js"></script>
 
-    <!-- Google reCAPTCHA -->
-    <script src="https://www.google.com/recaptcha/api.js?onload=onRecaptchaLoad&render=explicit" async defer></script>
+    <!-- Cloudflare Turnstile -->
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?onload=onTurnstileLoad&render=explicit" async defer></script>
 
     <!-- Main JavaScript -->
     <script src="main.js"></script>
